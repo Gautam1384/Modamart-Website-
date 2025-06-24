@@ -1,0 +1,28 @@
+
+.header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.Anchor{
+color:black;
+margin-left: 50px;
+text-decoration: none;
+font-weight: bold;
+}
+.anchor{
+margin-left: 40rem;
+}
+h1{
+    display: flex;
+    justify-content: center;
+}
+input{
+    margin-left: 34rem;
+    padding:0 14px;
+    
+}
+button{
+    margin-left: 3px;
+    background-color:violet;
+}
