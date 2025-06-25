@@ -1,6 +1,7 @@
 import React from 'react'
-import './Navbar.jsx'
+// import './Navbar.jsx'
 import './Navbar.css'
+
 const Navbar = () => {
   return (
     <div>
@@ -15,5 +16,5 @@ const Navbar = () => {
     </div>
   )
 }
-
 export default Navbar
+
