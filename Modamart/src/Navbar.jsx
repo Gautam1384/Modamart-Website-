@@ -1,60 +1,25 @@
-// import React from 'react'
-// // import './Navbar.jsx'
-// import './Navbar.css'
-
-// const Navbar = () => {
-//   return (
-//     <div>
-//      <h1>Modamart</h1>
-//       <header className="header">
-//      <nav className="anchor">
-//         <a  className="Anchor"href="/">Home</a>
-//         <a className="Anchor"href="/">Products</a>
-//         <a className="Anchor"href="/">Cart</a>
-//      </nav>
-//      </header>
-//     </div>
-//   )
-// }
-// export default Navbar
-
-
-// import React from 'react';
-// import './Navbar.css';
-
-// const Navbar = () => {
-//   return (
-//     <div className="navbar-container">
-//       <h1 className="logo">Modamart</h1>
-      
-//       <div className="search-box">
-//         <input type="text" placeholder="Search the Products" />
-//         <button>Search</button>
-//       </div>
-      
-//       <nav className="anchor">
-//         <a className="Anchor" href="/">Home</a>
-//         <a className="Anchor" href="/">Products</a>
-//         <a className="Anchor" href="/">Cart</a>
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-
 
 import React from 'react';
+import {useState,useEffect}from 'react'
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = () =>{
+  const sugg=["suits","sarees","lehengas","gown","kurtas","anarkali"]
+const [index,setIndex]=useState(0)
+useEffect(()=>{
+  const time=setInterval(()=>{
+    setIndex((prev)=>(prev+1)%sugg.length)
+  },1000)
+
+  return ()=>clearInterval(time)
+},[])
+
   return (
     <header className="navbar-container">
       <h1 className="logo">Modamart</h1>
 
       <div className="search-box">
-        <input type="text" placeholder="Search the Products..." />
+        <input type="text" placeholder={`Search for ${sugg[index]}...`} />
         <button><i className="fas fa-search"></i></button>
       </div>
 
@@ -65,6 +30,8 @@ const Navbar = () => {
           <div className="dropdown-content">
             <a href="/">Women</a>
             <a href="/">Men</a>
+            <a href="/">Kids</a>
+            <a href="/">Jewellery</a>
             <a href="/">Footwear</a>
           </div>
         </div>
@@ -75,4 +42,14 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
 
