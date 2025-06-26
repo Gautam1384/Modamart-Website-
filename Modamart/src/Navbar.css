@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
 
 .navbar-container {
@@ -5,7 +7,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
@@ -29,7 +32,7 @@
 
 .search-box input {
   padding: 10px 14px;
-  width: 280px;
+  width: 240px;
   border: 1px solid #ccc;
   border-radius: 20px 0 0 20px;
   outline: none;
@@ -67,7 +70,12 @@
   border-bottom: 2px solid #c084fc;
 }
 
-/* Dropdown Styles */
+.Anchor i {
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+/* Dropdown styles */
 .dropdown {
   position: relative;
 }
@@ -77,32 +85,45 @@
   position: absolute;
   background: #fff;
   top: 120%;
-  right: 0;
-  min-width: 150px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  left: 0;
+  min-width: 180px;
   border-radius: 8px;
-  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 20px;
-  color: #333;
-  text-decoration: none;
-  font-family: 'Cinzel', serif;
-  transition: background 0.3s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #f3e8ff;
+  padding: 1rem;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Responsive (optional) */
+Mega dropdown specific
+.dropdown-content.mega {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 2rem;
+}
+
+.dropdown-content.mega ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-content.mega li a {
+  display: block;
+  padding: 6px 0;
+  color: #333;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  transition: color 0.3s ease;
+}
+
+.dropdown-content.mega li a:hover {
+  color: #a855f7;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
@@ -120,4 +141,143 @@
     gap: 10px;
     align-items: flex-start;
   }
+}    
+
+
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap'); */
+
+/* .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.search-box {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.search-box input {
+  padding: 10px 14px;
+  width: 240px;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+.search-box button {
+  padding: 10px 16px;
+  background-color: #c084fc;
+  border: none;
+  color: white;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.search-box button i {
+  font-size: 14px;
+}
+
+.anchor {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.Anchor {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Cinzel', serif;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.Anchor:hover {
+  color: #a855f7;
+}
+
+.Anchor i {
+  margin-left: 5px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content.mega {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 2rem;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 100;
+  min-width: 250px;
+}
+
+.dropdown-content.mega ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-content.mega li a {
+  display: block;
+  padding: 6px 10px;
+  color: #333;
+  font-family: 'Cinzel', serif;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.dropdown-content.mega li a:hover {
+  color: #a855f7;
+}
+
+/* Responsive */
+/* @media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-box {
+    margin: 1rem 0;
+  }
+
+  .anchor {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .dropdown-content.mega {
+    left: 0;
+    right: auto;
+    top:2.5rem;
+  }
+} */ 

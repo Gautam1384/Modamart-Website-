@@ -3,6 +3,8 @@
 import Navbar from './Navbar.jsx'
 // import Search from './Search.jsx'
 import Banner from './Banner.jsx'
+
+
 function App() {
 
   return (
@@ -10,6 +12,8 @@ function App() {
   <Navbar/>
   {/* <Search/> */}
   <Banner/>
+ 
+  
     </>
   )
 }
