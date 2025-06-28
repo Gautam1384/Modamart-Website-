@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './FilterSection.css';
 
@@ -31,23 +32,14 @@ const FilterSection = () => {
       </FilterCategory>
 
       <FilterCategory title="Sub Categories">
-         <label><input type="checkbox" />Men's</label>
-        <label><input type="checkbox" /> Sherwanis</label>
+        <label><input type="checkbox" /> Sherwanis</label><br />
         <label><input type="checkbox" /> Kurtas</label>
-          <label><input type="checkbox" />Women's</label>
-        <label><input type="checkbox" /> Lehengas</label>
-        <label><input type="checkbox" /> Anarkali</label>
-        <label><input type="checkbox" /> Sarees</label>
       </FilterCategory>
 
       <FilterCategory title="Color">
         <label><input type="checkbox" /> Red</label><br />
         <label><input type="checkbox" /> Blue</label><br />
         <label><input type="checkbox" /> Gold</label>
-         <label><input type="checkbox" /> Pink</label>
-          <label><input type="checkbox" />Yellow</label>
-           <label><input type="checkbox" />Black</label>
-            <label><input type="checkbox" />White</label>
       </FilterCategory>
     </div>
   );
