@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp,FaBars, FaStore } from 'react-icons/fa';
 
+const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
+const dynamic = [
+  "Explore Modamart’s exclusive collection of regal outfits for everyone",
+  "Royal fashion now just a click away all over India.",
+  "Make every occasion majestic",
+  "Traditional elegance meets modern luxury-Only at Modamart.",
+  "Shop Modamart's royal wear collection today"
+];
+
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
   const [index, setIndex] = useState(0);
@@ -9,6 +18,7 @@ const Navbar = () => {
   const [placeholder, setPlaceholder] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const[menuOpen, setMenuOpen] = useState(false);
+  const [isSliding, setIsSliding] = useState(true);
 
 
   useEffect(() => {
@@ -28,6 +38,17 @@ const Navbar = () => {
       return () => clearTimeout(pause);
     }
   }, [charIndex, index]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsSliding(false); 
+      setTimeout(() => {
+        setDynamicIndex((prev) => (prev + 1) % dynamic.length);
+        setIsSliding(true); 
+      }, 50); 
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
