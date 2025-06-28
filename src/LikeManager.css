@@ -1,0 +1,46 @@
+.like-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+}
+
+.like-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.like-image {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.like-image:hover {
+  transform: scale(1.05);
+}
+
+.like-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.like-icon,
+.share-icon {
+  background: #00000088;
+  color: white;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.like-icon.liked {
+  color: red;
+}

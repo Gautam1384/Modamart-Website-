@@ -7,7 +7,7 @@ import ProductPage from './ProductPage';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="*" element={<App />} />
       <Route path="/product/:id" element={<ProductPage />} />
     </Routes>
   </BrowserRouter>

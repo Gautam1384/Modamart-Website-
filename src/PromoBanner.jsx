@@ -5,7 +5,6 @@ import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaStore } from 'r
 
 const PromoBanner = () => {
   return (
-
     <div className="promo-banner">
       <ul className="nav-links">
         <li>WOMEN</li>
@@ -38,6 +37,7 @@ const PromoBanner = () => {
 
       <p>🎉 Carnival SALE — Shop for ₹11,999 & Get Extra 10% Off! | Use Code: <strong>STYLE10</strong></p>
     </div>
+  
   );
 };
 

@@ -1,17 +1,22 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
-import { useNavigate, useParams } from 'react-router-dom';
-import mockData from './data/mockData';
-import './ProductPage.css'
-import './Footer.jsx'
 import Footer from './Footer.jsx';
-// import PromoBanner from './PromoBanner.jsx';
+import mockData from './data/mockData';
+import './ProductPage.css';
 
+const imageModules = import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+});
 
-const images = Object.values(
-    import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', { eager: true })
-);
+const imageList = Object.entries(imageModules)
+    .sort((a, b) => {
+        const getNum = (str) => Number(str.match(/image(\d+)/)?.[1]);
+        return getNum(a[0]) - getNum(b[0]);
+    })
+    .map((entry) => entry[1]); 
 
 const ProductPage = () => {
     const { id } = useParams();
@@ -22,37 +27,40 @@ const ProductPage = () => {
         return <p>Product not found.</p>;
     }
 
-    const imgIndex = parseInt(id);
-    const imageSrc = images[imgIndex]?.default || '';
+    const imageSrc = imageList[product.id]; 
 
     return (
-        <div className="product-page">
-            <Navbar/>
-            
+        <>
+            <Navbar />
             <PromoBanner />
-            <div className="product-container">
-                <div className="product-image-section">
-                    {imageSrc ? (
-                        <img className="product-image" src={imageSrc} alt={product.title} />
-                    ) : (
-                        <p>Image not found</p>
-                    )}
-                </div>
-                <div className="product-details">
-                    <h2 className="product-title">{product.title}</h2>
-                    <p className="product-desc">{product.description}</p>
-                    <p className="product-price">₹{product.price}</p>
-                    <div className='product-buttons'>
-                        <button>Add to Cart</button>
-                        <button>Buy Now</button>
+            <div className="product-page">
+                <div className="product-container">
+                    <div className="product-image-section">
+                        {imageSrc ? (
+                            <img className="product-image" src={imageSrc} alt={product.title} />
+                        ) : (
+                            <p>Image not found</p>
+                        )}
                     </div>
-                    <div className='go-back'>
-                        <button onClick={() => navigate(-1)}>Go Back</button>
+
+                    <div className="product-details">
+                        <h2 className="product-title">{product.title}</h2>
+                        <p className="product-desc">{product.description}</p>
+                        <p className="product-price">₹{product.price}</p>
+
+                        <div className='product-buttons'>
+                            <button>Add to Cart</button>
+                            <button>Buy Now</button>
+                        </div>
+
+                        <div className='go-back'>
+                            <button onClick={() => navigate(-1)}>Go Back</button>
+                        </div>
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer/>
-        </div>
+        </>
     );
 };
 

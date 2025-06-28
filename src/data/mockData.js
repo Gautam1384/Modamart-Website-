@@ -389,14 +389,14 @@ const mockData = [
         category: "Traditional",
         image: "image48.jpg"
     },
-    {
-        id: 49,
-        title: "Product 50",
-        description: "A man dressed in a traditional Indian Sherwani, a long coat often worn for formal events.",
-        price: 2200,
-        category: "Traditional",
-        image: "image49.jpg"
-    }
+    // {
+    //     id: 49,
+    //     title: "Product 50",
+    //     description: "A man dressed in a traditional Indian Sherwani, a long coat often worn for formal events.",
+    //     price: 2200,
+    //     category: "Traditional",
+    //     image: "image49.jpg"
+    // }
 
 
 

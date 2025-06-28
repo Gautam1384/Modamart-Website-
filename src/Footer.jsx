@@ -31,9 +31,9 @@ const Footer = () => {
       <div className="footer-column">
         <h4>Follow Us</h4>
         <ul  className='social-icons'>
-          <li><a href="#" className='icon instagram' target='_blank' rel><FaInstagram/>Instagram</a></li>
-          <li><a href="#" className='icon facebook' target='_blank' rel><FaFacebook/>Facebook</a></li>
-          <li><a href="#" className='icon youtube' target='_blank' rel><FaYoutube/>YouTube</a></li>
+          <li><a href="#" className='icon instagram' target='_blank' ><FaInstagram/>Instagram</a></li>
+          <li><a href="#" className='icon facebook' target='_blank' ><FaFacebook/>Facebook</a></li>
+          <li><a href="#" className='icon youtube' target='_blank' ><FaYoutube/>YouTube</a></li>
         </ul>
       </div>
       <div className="footer-bottom">

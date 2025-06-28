@@ -6,6 +6,34 @@
   box-sizing: border-box;
 }
 
+.sticky-container{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.Modamart-dynamic {
+  width: 100%;
+  background: #000;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* min-height: 36px; */
+}
+
+.modamart-slide {
+  display: inline-block;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1rem;
+  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
 .navbar-container {
   display: flex;
   align-items: center;
@@ -84,7 +112,6 @@
   font-size: 1.1rem;
 }
 
-/* Dropdown styles */
 .dropdown {
   position: relative;
 }
@@ -129,6 +156,17 @@ Mega dropdown specific .dropdown-content.mega {
 
 .dropdown-content.mega li a:hover {
   color: #a855f7;
+}
+
+.heart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 .hamburger {
