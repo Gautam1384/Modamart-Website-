@@ -1,8 +1,12 @@
 import React from 'react';
 import Navbar from './Navbar.jsx';
+import PromoBanner from './PromoBanner.jsx';
 import { useNavigate, useParams } from 'react-router-dom';
 import mockData from './data/mockData';
 import './ProductPage.css'
+import './Footer.jsx'
+import Footer from './Footer.jsx';
+// import PromoBanner from './PromoBanner.jsx';
 
 
 const images = Object.values(
@@ -24,6 +28,8 @@ const ProductPage = () => {
     return (
         <div className="product-page">
             <Navbar/>
+            
+            <PromoBanner />
             <div className="product-container">
                 <div className="product-image-section">
                     {imageSrc ? (
@@ -45,6 +51,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
