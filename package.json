@@ -1,9 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.6.2"
-=======
   "name": "modamart",
   "private": true,
   "version": "0.0.0",
@@ -30,6 +25,5 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.5"
->>>>>>> 6d83725d9719e8010d907def12d7ddafbc03f611
   }
 }
