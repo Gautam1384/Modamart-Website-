@@ -275,6 +275,47 @@ Mega dropdown specific .dropdown-content.mega {
 
 }
 
+.Modamart-dynamic {
+  width: 100%;
+  background: #000;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 36px;
+}
+
+.modamart-slide {
+  display: inline-block;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1rem;
+  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .Modamart-dynamic {
+    padding: 6px 4px;
+    min-height: 28px;
+  }
+  .modamart-slide {
+    font-size: 0.85rem;
+    padding: 0 4px;
+  }
+}
+
 
 
 
