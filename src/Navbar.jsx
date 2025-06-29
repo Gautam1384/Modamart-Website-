@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp,FaBars, FaStore } from 'react-icons/fa';
+import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
@@ -18,8 +18,27 @@ const Navbar = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
-  const[menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dynamicIndex, setDynamicIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(true);
+  const [likeCount, setLikeCount] = useState(() => {
+    const stored = localStorage.getItem('likedProducts');
+    return stored ? JSON.parse(stored).length : 0;
+  });
 
+  useEffect(() => {
+    const updateLikeCount = (e) => {
+      setLikeCount(e.detail);  // Updates instantly when event is received
+    };
+
+    window.addEventListener('likedCountUpdated', updateLikeCount);
+
+    return () => {
+      window.removeEventListener('likedCountUpdated', updateLikeCount);
+    };
+  }, []);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const currentWord = sugg[index];
@@ -37,17 +56,6 @@ const Navbar = () => {
       return () => clearTimeout(pause);
     }
   }, [charIndex, index]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsSliding(false); 
-      setTimeout(() => {
-        setDynamicIndex((prev) => (prev + 1) % dynamic.length);
-        setIsSliding(true); 
-      }, 50); 
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
 
 
   useEffect(() => {
