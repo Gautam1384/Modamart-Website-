@@ -20,7 +20,7 @@ const imageList = Object.entries(imageModules)
     const getNum = (str) => Number(str.match(/image(\d+)/)?.[1]);
     return getNum(a[0]) - getNum(b[0]);
   })
-  .map((entry) => entry[1]); // Get default exports
+  .map((entry) => entry[1]); 
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -95,7 +95,7 @@ const Banner = () => {
 
         <div className="card-grid">
           {mockData.map((product) => {
-            const imageSrc = imageList[product.id]; // ✅ Get image by id
+            const imageSrc = imageList[product.id]; 
             return (
               <div
                 key={product.id}
