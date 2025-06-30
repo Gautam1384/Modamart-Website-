@@ -1,3 +1,4 @@
+
 .cart-page {
     padding: 2rem;
     max-width: 800px;
@@ -13,8 +14,10 @@
 
 .empty {
     text-align: center;
-    font-size: 1.2rem;
-    color: gray;
+    margin-top: 6rem;
+    text-align: center;
+    font-size: 2.7rem;
+    color: black;
 }
 
 .cart-list {
@@ -73,4 +76,38 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.empty-cart-section {
+    text-align: center;
+    margin-top: 3rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.go-back-btn {
+    margin-top: 2rem;
+    padding: 13px 22px;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.go-back-btn:hover {
+    background-color: #4f46e5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
