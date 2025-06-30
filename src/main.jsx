@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -29,13 +30,19 @@
 
 
 
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import ProductPage from './ProductPage';
 import CartPage from './CartPage';
+<<<<<<< HEAD
 import { CartProvider } from './context/CartContext.js';
+=======
+import { CartProvider } from './Context/CartContext.js';
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import ScrollTop from './ScrollTop.jsx';
 
 createRoot(document.getElementById('root')).render(

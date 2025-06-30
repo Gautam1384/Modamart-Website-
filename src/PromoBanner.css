@@ -1,6 +1,20 @@
+<<<<<<< HEAD
 .promo-banner {
  position: sticky;
   top: 86px;
+=======
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.promo-banner {
+  /* background: #f5f5f5; */
+  position: sticky;
+  top: 121.5px;
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   z-index: 999;
   background-color: #fff;
   padding: 10px 20px;
@@ -11,20 +25,66 @@
   border-bottom: 1px solid #ccc;
 }
 
+<<<<<<< HEAD
 .sub-navbar {
 
+=======
+.promo-text {
+  white-space: nowrap;
+  display: inline-block;
+  /* padding-left: 100%; */
+  animation: slideText 15s linear infinite;
+  font-weight: bold;
+  color: #b33c00;
+  font-size: 16px;
+}
+
+@keyframes slideText {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.sub-navbar {
+  /* display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd; */
+  /* background-color: #f8f8f8; */
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   padding: 10px 0;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   position: sticky;
+=======
+  position: static;
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   top: 64px;
   z-index: 999;
 
 }
 
+<<<<<<< HEAD
 .nav-link {
+=======
+
+
+.nav-link {
+  /* display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500; */
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   display: flex;
   justify-content: center;
   gap: 21px;
@@ -39,6 +99,7 @@
 
 }
 
+<<<<<<< HEAD
 .nav-links {
   display: flex;
   gap: 20px;
@@ -72,17 +133,43 @@
 }
 
 .nav-links li:hover {
+=======
+.nav-link li {
+  /* cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent; 
+  transition: border-color 0.2s, color 0.2s; */
+  position: relative;
+  cursor: pointer;
+  color: #333;
+  padding: 4px 1px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: inherit;
+  /* display: block;
+  padding: 6px 12px; */
+}
+
+.nav-link li:hover {
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   /* color: #d6249f;
   border-bottom: 2px solid #c084fc; */
   color: #a855f7;
 }
 
+<<<<<<< HEAD
 .nav-links li:not(.store-link):hover {
   color: #fff;
   background-color: #111;    /* Black background on hover */
   border-bottom: 2px solid #c084fc;
 }
 
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 .nav-link li::after {
   content: '';
   position: absolute;
@@ -159,6 +246,7 @@
 
 .nav-links li {
   font-size: 20px;
+<<<<<<< HEAD
   font-weight: bold;         /* Make text bold */
   color: #111;               /* Pure black or near-black */
   cursor: pointer;
@@ -184,16 +272,39 @@
   color: #fff;
   background-color: #111;    /* Black background on hover */
   border-bottom: 2px solid #c084fc;
+=======
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  padding: 6px;
+  transition: color, background-color 0.2s, color 0.2s;
+  border-bottom: 2px solid transparent;
+
+}
+
+.nav-links li:not(.store-link):hover {
+  color: gray;
+  background-color: black;
+  border-bottom: 2px solid #c084fc;
+
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 }
 
 .store-link {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   color: #111;               /* Match black color */
   font-weight: bold;         /* Bold like nav links */
   background: none;
   border-radius: 6px;
   padding: 6px 12px;
+=======
+  color: #333;
+
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 }
 
 
@@ -210,9 +321,14 @@
   font-size: 25px;
   color: black;
   cursor: pointer;
+<<<<<<< HEAD
 
 
 }
+=======
+}
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 @media (max-width: 768px) {
   .nav-links {
     flex-wrap: wrap;
@@ -223,7 +339,10 @@
   .nav-links li {
     font-size: 16px;
     padding: 4px 8px;
+<<<<<<< HEAD
     color:#111;
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   }
 
   .store-link {
@@ -256,4 +375,8 @@
     padding: 10px;
     text-align: center;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc

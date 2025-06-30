@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 import './Navbar.css';
 import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
+=======
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import { useCart } from './Context/CartContext';
+import './Navbar.css';
+import {FaHome, FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
@@ -30,7 +39,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const updateLikeCount = (e) => {
+<<<<<<< HEAD
       setLikeCount(e.detail);
+=======
+      setLikeCount(e.detail);  
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     };
 
     window.addEventListener('likedCountUpdated', updateLikeCount);
@@ -95,7 +108,11 @@ const Navbar = () => {
     setShowDropdown(false);
   };
 
+<<<<<<< HEAD
   const { cartItems } = useCart();
+=======
+  const {cartItems} = useCart();
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 
   return (
     <>
@@ -117,6 +134,7 @@ const Navbar = () => {
           <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}><FaBars /></button>
 
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
+<<<<<<< HEAD
           <div className="navbar-icons">
             <FaWhatsapp className="nav-icon" />
             <FaUser className="nav-icon" />
@@ -131,10 +149,28 @@ const Navbar = () => {
             {/* <div className="cart-icon">
                    */}
             <div onClick={() => navigate('/cart')} className='cart-icon-container'>
+=======
+            <div className="navbar-icons">
+              <Link to="/"><FaHome className="nav-icon" title="Home"/></Link>
+              <FaWhatsapp className="nav-icon" />
+              <FaUser className="nav-icon" />
+
+              <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
+                <FaHeart className="nav-icon" />
+                {likeCount > 0 && (
+                  <span className="like-badge">{likeCount}</span>
+                )}
+              </div>
+
+                {/* <div className="cart-icon">
+                   */}
+                   <div onClick={()=> navigate('/cart')} className='cart-icon-container'>
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
               <FaShoppingCart className="nav-icon" />
               {cartItems.length > 0 && (
                 <span className="cart-badge">{cartItems.length}</span>
               )}
+<<<<<<< HEAD
             </div>
             <FaVideo className="nav-icon" />
           </div>
@@ -160,10 +196,38 @@ const Navbar = () => {
         </nav>
       </header>
     </div >
+=======
+                </div>
+              <FaVideo className="nav-icon" />
+            </div>
+
+            <div className="dropdown" onClick={toggleDropdown}>
+              {showDropdown && (
+                <div className="dropdown-content mega" onMouseLeave={closeDropdown}>
+                  <ul>
+                    <li><a href="/">Sarees</a></li>
+                    <li><a href="/">Lehengas</a></li>
+                    <li><a href="/">Gowns</a></li>
+                    <li><a href="/">Anarkalis</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="/">Kurtas</a></li>
+                    <li><a href="/">Jewellery</a></li>
+                    <li><a href="/">Footwear</a></li>
+                  </ul>
+                  <li>WOMEN</li>
+                </div>
+              )}
+            </div>
+          </nav>
+        </header>
+      </div>
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     </>
   );
 };
 
+<<<<<<< HEAD
 export default Navbar;
 
 
@@ -203,3 +267,6 @@ export default Navbar;
 
 
 
+=======
+export default Navbar;
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc

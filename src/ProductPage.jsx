@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/ProductPage.jsx
 // import React from 'react';
 // import Navbar from './Navbar.jsx';
@@ -86,11 +87,17 @@
 
 
 
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
+<<<<<<< HEAD
 import { useCart } from './context/CartContext.js';
+=======
+import { useCart } from './Context/CartContext.js';
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import Footer from './Footer.jsx';
 import mockData from './data/mockData';
 import './ProductPage.css';
@@ -175,6 +182,7 @@ const ProductPage = () => {
     );
 };
 
+<<<<<<< HEAD
 export default ProductPage;
 
 
@@ -185,3 +193,6 @@ export default ProductPage;
 
 
 
+=======
+export default ProductPage;
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc

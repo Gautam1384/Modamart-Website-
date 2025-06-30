@@ -1,12 +1,19 @@
 const mockData = [
+<<<<<<< HEAD
  
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     {
         id: 0,
         title: "Product 1",
         description: "These are traditional handcrafted potli-style and ethnic fabric handbags, adorned with zari and mirror work, ideal for festive and wedding occasions.",
         price: 1000,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Bag1.png"
+=======
+        image: "image0.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 1,
@@ -14,7 +21,11 @@ const mockData = [
         description: "This is a traditional Meenakari bangle with intricate enamel and stone work, reflecting rich Indian craftsmanship.",
         price: 1050,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Belt1.jpg"
+=======
+        image: "image1.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 2,
@@ -22,7 +33,11 @@ const mockData = [
         description: "This is a golden embroidered Anarkali suit with churidar and dupatta – perfect for festive or traditional occasions.",
         price: 1100,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Dress1.png"
+=======
+        image: "image2.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 3,
@@ -30,7 +45,11 @@ const mockData = [
         description: "This dress is a women's embroidered straight-cut kurti with traditional ethnic design, commonly worn for festive or cultural occasions.",
         price: 1150,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Dress2.png"
+=======
+        image: "image3.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 4,
@@ -38,7 +57,11 @@ const mockData = [
         description: "This is a traditional Indian royal attire for kids, featuring a sherwani with intricate embroidery, a turban (safa), and jewelry for a regal look.",
         price: 1200,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid1.jpg"
+=======
+        image: "image4.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 5,
@@ -46,7 +69,11 @@ const mockData = [
         description: "This is a traditional Indian royal-style lehenga choli for girls, adorned with heavy embroidery and paired with a decorative turban for a regal appearance.",
         price: 1250,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid2.jpg"
+=======
+        image: "image5.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 6,
@@ -54,7 +81,11 @@ const mockData = [
         description: "This is a traditional Indian sherwani for boys, richly embroidered and paired with a jeweled turban for a royal ceremonial look.",
         price: 1300,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid3.jpg"
+=======
+        image: "image6.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 7,
@@ -62,7 +93,11 @@ const mockData = [
         description: "This is a royal-themed traditional Indian combo dress for kids, featuring a Mughal-style sherwani for the boy and an ornate lehenga-choli with crown for the girl.",
         price: 1350,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid4.jpg"
+=======
+        image: "image7.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 8,
@@ -70,7 +105,11 @@ const mockData = [
         description: "Vibrant Pink Kurta Set with Intricate Embroidery for Little Girls",
         price: 1400,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid5.jpg"
+=======
+        image: "image8.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 9,
@@ -78,7 +117,11 @@ const mockData = [
         description: "A stunning pink lehenga choli adorned with intricate embroidery and embellishments, perfect for little princesses to shine on special occasions",
         price: 1450,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid6.jpg"
+=======
+        image: "image9.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 10,
@@ -86,7 +129,11 @@ const mockData = [
         description: "A young girl is wearing a traditional Indian Anarkali suit.",
         price: 1500,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid7.jpg"
+=======
+        image: "image10.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 11,
@@ -94,7 +141,11 @@ const mockData = [
         description: "A young boy dressed in a traditional Indian sherwani, complete with intricate embroidery and ornate headwear.",
         price: 1550,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid8.jpg"
+=======
+        image: "image11.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 12,
@@ -102,7 +153,11 @@ const mockData = [
         description: "A beautiful traditional salwar kameez, complete with intricate embroidery and embellishments, perfect for special occasions or formal events.",
         price: 1600,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kid9.jpg"
+=======
+        image: "image12.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 13,
@@ -110,7 +165,11 @@ const mockData = [
         description: "A vibrant pink salwar kameez with intricate gold embroidery and teal accents, perfect for formal or festive occasions",
         price: 1650,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Kurti2.png"
+=======
+        image: "image13.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 14,
@@ -118,7 +177,11 @@ const mockData = [
         description: "A traditional Indian lehenga, characterized by its vibrant red color and intricate gold embroidery, typically worn for special occasions such as weddings and festivals.",
         price: 1700,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Lehenga1.png"
+=======
+        image: "image14.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 15,
@@ -126,7 +189,11 @@ const mockData = [
         description: "A stunning red lehenga with intricate gold embroidery, perfect for adding a touch of elegance and cultural heritage to your designs.",
         price: 1750,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Lehenga3.png"
+=======
+        image: "image15.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 16,
@@ -134,7 +201,11 @@ const mockData = [
         description: "A stunning peach-colored lehenga with intricate embroidery, perfect for adding a touch of elegance to any cultural event or celebration.",
         price: 1800,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Lehenga4.png"
+=======
+        image: "image16.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 17,
@@ -142,7 +213,11 @@ const mockData = [
         description: "A woman adorned in a stunning traditional Indian lehenga choli, perfect for capturing the essence of cultural heritage and elegance",
         price: 1850,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Lehenga6.png"
+=======
+        image: "image17.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 18,
@@ -150,7 +225,11 @@ const mockData = [
         description: "A stunning traditional Indian lehenga with a vibrant yellow and pink skirt, adorned with intricate patterns and embellishments, perfect for cultural events or special occasions.",
         price: 1900,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Lehenga7.png"
+=======
+        image: "image18.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 19,
@@ -158,7 +237,11 @@ const mockData = [
         description: "Traditional Indian Kurta Pyjama set for men.",
         price: 1950,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man10.jpg"
+=======
+        image: "image19.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 20,
@@ -166,7 +249,11 @@ const mockData = [
         description: "The man is dressed in a traditional Indian Sherwani, characterized by its long coat-like design and intricate embroidery, often worn for special events and celebrations.",
         price: 2000,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man11.jpg"
+=======
+        image: "image20.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 21,
@@ -174,7 +261,11 @@ const mockData = [
         description: "A traditional Indian Sherwani, a long coat-like garment typically worn on formal occasions such as weddings and festivals.",
         price: 2050,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man12.jpg"
+=======
+        image: "image21.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 22,
@@ -182,7 +273,11 @@ const mockData = [
         description: "This is a traditional Indian Kurta, a long tunic with intricate designs, often worn for formal and cultural events.",
         price: 2100,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man13.jpg"
+=======
+        image: "image22.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 23,
@@ -190,7 +285,11 @@ const mockData = [
         description: "The man is dressed in a traditional Indian Sherwani, a long coat often worn for formal events.a man dressed in a traditional Indian Sherwani, characterized by its long, formal design and intricate embroidery",
         price: 2150,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man15.jpg"
+=======
+        image: "image23.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 24,
@@ -198,7 +297,11 @@ const mockData = [
         description: "The man is dressed in a traditional Indian Sherwani, a long coat often worn for formal events.",
         price: 2200,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man16.jpg"
+=======
+        image: "image24.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 25,
@@ -206,7 +309,11 @@ const mockData = [
         description: "Traditional men's Juttis with rich embroidery.",
         price: 1000,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man17.jpg"
+=======
+        image: "image25.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 26,
@@ -214,13 +321,22 @@ const mockData = [
         description: "A man wearing a traditional Indian dhoti with a kurta and a colorful vest.",
         price: 1050,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man18.jpg"
+=======
+        image: "image26.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 27,
         title: "Product 28",
         description: "A man is wearing a traditional Indian Sherwani, adorned with multiple necklaces.",
+<<<<<<< HEAD
         price: 1100, category: "Traditional", imageName: "Man19.jpg"
+=======
+        price: 1100, category: "Traditional",
+         image: "image27.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 28,
@@ -228,7 +344,11 @@ const mockData = [
         description: "A stylish ensemble featuring a white kurta and dhoti paired with a vibrant, long sherwani or bandhgala, perfect for formal or cultural events.",
         price: 1150,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man3.png"
+=======
+        image: "image28.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 29,
@@ -236,7 +356,11 @@ const mockData = [
         description: "The image features a man wearing a traditional Indian kurta and dhoti, showcasing a classic and elegant attire.",
         price: 1200,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man4.jpg"
+=======
+        image: "image29.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 30,
@@ -244,7 +368,11 @@ const mockData = [
         description: "A man dressed in a traditional Indian kurta and dhoti, characterized by a long blue tunic adorned with gold embroidery and cream-colored loose-fitting pants.",
         price: 1250,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man5.jpg"
+=======
+        image: "image30.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 31,
@@ -252,7 +380,11 @@ const mockData = [
         description: "A Sherwani, which is a traditional Indian long coat worn for formal occasions, characterized by its elegant design and intricate embroidery.",
         price: 1300,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Man9.jpg"
+=======
+        image: "image31.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 32,
@@ -260,7 +392,11 @@ const mockData = [
         description: "A pair of traditional Indian juttis adorned with vibrant embroidery, perfect for adding a touch of cultural elegance to any outfit.",
         price: 1350,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari.png"
+=======
+        image: "image32.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 33,
@@ -268,7 +404,11 @@ const mockData = [
         description: "A pair of traditional Indian juttis adorned with vibrant embroidery, perfect for adding a touch of cultural elegance to any outfit.",
         price: 1400,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari3.jpg"
+=======
+        image: "image33.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 34,
@@ -276,7 +416,11 @@ const mockData = [
         description: "These traditional Indian Mojari shoes feature elegant green fabric with gold embroidery, perfect for adding a touch of cultural heritage to any outfit.",
         price: 1450,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari4.jpg"
+=======
+        image: "image34.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 35,
@@ -284,7 +428,11 @@ const mockData = [
         description: "Traditional Indian Mojari shoes with intricate embroidery and ornate designs.",
         price: 1500,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari4.png"
+=======
+        image: "image35.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 36,
@@ -292,7 +440,11 @@ const mockData = [
         description: "Elegant Khussa shoes adorned with intricate embroidery, perfect for adding a touch of traditional Indian flair to any outfit.",
         price: 1550,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari5.jpg"
+=======
+        image: "image36.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 37,
@@ -300,7 +452,11 @@ const mockData = [
         description: "Traditional Indian Juttis with intricate gold embroidery.",
         price: 1600,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari5.png"
+=======
+        image: "image37.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 38,
@@ -308,7 +464,11 @@ const mockData = [
         description: "A stunning diamond-set choker necklace, perfect for adding a touch of elegance and tradition to any outfit.",
         price: 1650,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari6.jpg"
+=======
+        image: "image38.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 39,
@@ -316,7 +476,11 @@ const mockData = [
         description: "Elegant white juti with gold embroidery, perfect for traditional Indian attire.",
         price: 1700,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Mojari6.png"
+=======
+        image: "image39.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 40,
@@ -324,14 +488,22 @@ const mockData = [
         description: "This stunning V-shaped diamond necklace features a central pendant surrounded by sparkling diamonds, creating a luxurious and eye-catching piece of jewelry.",
         price: 1750,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Saddle1.jpg"
+=======
+        image: "image40.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 41,
         title: "Product 42", description: "A classic equestrian accessory designed for comfort and style in Western horse riding.",
         price: 1800,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Saree1.png"
+=======
+        image: "image41.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 42,
@@ -339,7 +511,11 @@ const mockData = [
         description: "This stunning Banarasi saree features intricate designs and luxurious fabric, perfect for adding a touch of elegance to any occasion.",
         price: 1850,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Saree2.png"
+=======
+        image: "image42.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 43,
@@ -347,7 +523,11 @@ const mockData = [
         description: "Elegant Fancy saree with intricate embroidery and luxurious fabric.",
         price: 1900,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Saree3.png"
+=======
+        image: "image43.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 44,
@@ -355,7 +535,11 @@ const mockData = [
         description: "Elegant Banarasi saree with intricate embroidery and luxurious fabric.",
         price: 1950,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Shoe1.jpg"
+=======
+        image: "image44.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 45,
@@ -363,7 +547,11 @@ const mockData = [
         description: "Traditional Peshawari Chappal with intricate embroidery and luxurious leather.",
         price: 2000,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Shoe2.jpg"
+=======
+        image: "image45.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 46,
@@ -371,13 +559,18 @@ const mockData = [
         description: "Traditional Peshawari Chappal: A classic men's footwear option featuring dark brown leather and detailed stitching.",
         price: 2050,
         category: "Traditional",
+<<<<<<< HEAD
         imageName: "Shoe3.jpg"
+=======
+        image: "image46.jpg"
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
     },
     {
         id: 47,
         title: "Product 48",
         description: "These men's Juttis feature intricate embroidery and studs, blending traditional craftsmanship with modern style.",
         price: 2100,
+<<<<<<< HEAD
         category: "Traditional",
         imageName: "man6.jpg"
     },
@@ -1211,3 +1404,31 @@ const mockData = [
 ];
 
 export default mockData;
+=======
+        category: "Traditional", 
+        image: "image47.jpg"
+    },
+    {
+        id: 48,
+        title: "Product 49",
+        description: "The man is dressed in a traditional Indian kurta and dhoti, perfect for formal or cultural occasions.",
+        price: 2150,
+        category: "Traditional",
+        image: "image48.jpg"
+    },
+    // {
+    //     id: 49,
+    //     title: "Product 50",
+    //     description: "A man dressed in a traditional Indian Sherwani, a long coat often worn for formal events.",
+    //     price: 2200,
+    //     category: "Traditional",
+    //     image: "image49.jpg"
+    // }
+];
+
+export default mockData;
+
+
+
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc

@@ -22,3 +22,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
+=======
+# Env files and secrets
+.env
+*.env
+*.key
+*.pem
+
+# OS-related
+Thumbs.db
+.DS_Store
+
+# React/Vite/Next build folders (if used)
+build/
+out/
+
+# Log files (already covered well)
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc

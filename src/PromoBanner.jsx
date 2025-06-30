@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React from 'react';
 // import './PromoBanner.css';
 
@@ -72,11 +73,19 @@ import React from 'react';
 import './PromoBanner.css';
 import { Link } from 'react-router-dom';
 import { FaStore } from 'react-icons/fa';
+=======
+import React from 'react';
+import './PromoBanner.css';
+import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaStore } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 
 const PromoBanner = () => {
   return (
     <div className="promo-banner">
       <ul className="nav-links">
+<<<<<<< HEAD
         <li><Link to="/category/women">WOMEN</Link></li>
         <li><Link to="/category/men">MEN</Link></li>
         <li><Link to="/category/kids">KIDS</Link></li>
@@ -86,6 +95,15 @@ const PromoBanner = () => {
         </li>
       </ul>
 
+=======
+        <li><Link to="/women">WOMEN</Link></li>
+        <li><Link to="/men">MEN</Link></li>
+        <li><Link to="/kids">KIDS</Link></li>
+        <li><Link to="/unisex">UNISEX</Link></li>
+        <li className="store-link">
+          <FaStore style={{ marginRight: '6px' }} />  Find Store </li>
+      </ul>
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
       <div className="sub-navbar">
         <ul className="nav-link">
           <li>Bestsellers</li>
@@ -107,10 +125,20 @@ const PromoBanner = () => {
         </ul>
       </div>
 
+<<<<<<< HEAD
       <p>
         🎉 Carnival SALE — Shop for ₹11,999 & Get Extra 10% Off! | Use Code: <strong>STYLE10</strong>
       </p>
     </div>
+=======
+      <div className="promo-banner">
+        <div className="promo-text">
+          <p>🎉 Carnival SALE — Shop for ₹11,999 & Get Extra 10% Off! | Use Code: <strong>STYLE10</strong></p>
+        </div>
+      </div>
+    </div>
+
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   );
 };
 

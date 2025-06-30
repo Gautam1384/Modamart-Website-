@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();

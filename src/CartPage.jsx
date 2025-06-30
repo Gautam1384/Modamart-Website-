@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 
 import React from 'react';
 import Navbar from './Navbar.jsx';
 import { useCart } from './context/CartContext.js';
+=======
+import React from 'react';
+import Navbar from './Navbar.jsx';
+import { useCart } from './Context/CartContext.js';
+>>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
 import { useNavigate } from 'react-router-dom';
 import './CartPage.css';
 import Footer from './Footer.jsx';
