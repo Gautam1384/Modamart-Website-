@@ -1203,7 +1203,6 @@ const mockData = [
     imageName: "Unisex25.jpg"
 }
 
-
 ];
 
 export default mockData;

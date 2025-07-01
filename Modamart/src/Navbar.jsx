@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from './context/CartContext';
+import {Link} from 'react-router-dom';
+import { useCart } from './Context/CartContext';
 import './Navbar.css';
-import { FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
+import {FaHome, FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
+import AuthModal from './AuthModal';
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
@@ -27,10 +28,11 @@ const Navbar = () => {
     const stored = localStorage.getItem('likedProducts');
     return stored ? JSON.parse(stored).length : 0;
   });
+  const [authOpen, setAuthOpen] = useState(false);
 
   useEffect(() => {
     const updateLikeCount = (e) => {
-      setLikeCount(e.detail);
+      setLikeCount(e.detail);  
     };
 
     window.addEventListener('likedCountUpdated', updateLikeCount);
@@ -95,7 +97,7 @@ const Navbar = () => {
     setShowDropdown(false);
   };
 
-  const { cartItems } = useCart();
+  const {cartItems} = useCart();
 
   return (
     <>
@@ -117,54 +119,94 @@ const Navbar = () => {
           <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}><FaBars /></button>
 
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
-          <div className="navbar-icons">
-            <FaWhatsapp className="nav-icon" />
-            <FaUser className="nav-icon" />
+            <div className="navbar-icons">
+              <Link to="/"><FaHome className="nav-icon" title="Home"/></Link>
+              <FaWhatsapp className="nav-icon" />
 
-            <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
-              <FaHeart className="nav-icon" />
-              {likeCount > 0 && (
-                <span className="like-badge">{likeCount}</span>
-              )}
-            </div>
+              <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
+                <FaHeart className="nav-icon" />
+                {likeCount > 0 && (
+                  <span className="like-badge">{likeCount}</span>
+                )}
+              </div>
 
-            {/* <div className="cart-icon">
+                {/* <div className="cart-icon">
                    */}
-            <div onClick={() => navigate('/cart')} className='cart-icon-container'>
+                   <div onClick={()=> navigate('/cart')} className='cart-icon-container'>
               <FaShoppingCart className="nav-icon" />
               {cartItems.length > 0 && (
                 <span className="cart-badge">{cartItems.length}</span>
               )}
+                </div>
+                 <FaUser
+          className="nav-icon"
+          onClick={() => setAuthOpen(true)}
+          style={{ cursor: 'pointer' }}
+        />
             </div>
-            <FaVideo className="nav-icon" />
-          </div>
-
-          <div className="dropdown" onClick={toggleDropdown}>
-            {showDropdown && (
-              <div className="dropdown-content mega" onMouseLeave={closeDropdown}>
-                <ul>
-                  <li><a href="/">Sarees</a></li>
-                  <li><a href="/">Lehengas</a></li>
-                  <li><a href="/">Gowns</a></li>
-                  <li><a href="/">Anarkalis</a></li>
-                </ul>
-                <ul>
-                  <li><a href="/">Kurtas</a></li>
-                  <li><a href="/">Jewellery</a></li>
-                  <li><a href="/">Footwear</a></li>
-                </ul>
-                <li>WOMEN</li>
-              </div>
-            )}
-          </div>
-        </nav>
-      </header>
-    </div >
+            <div className="dropdown" onClick={toggleDropdown}>
+              {showDropdown && (
+                <div className="dropdown-content mega" onMouseLeave={closeDropdown}>
+                  <ul>
+                    <li><a href="/">Sarees</a></li>
+                    <li><a href="/">Lehengas</a></li>
+                    <li><a href="/">Gowns</a></li>
+                    <li><a href="/">Anarkalis</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="/">Kurtas</a></li>
+                    <li><a href="/">Jewellery</a></li>
+                    <li><a href="/">Footwear</a></li>
+                  </ul>
+                  <li>WOMEN</li>
+                </div>
+              )}
+            </div>
+          </nav>
+        </header>
+      </div>
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
     </>
   );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

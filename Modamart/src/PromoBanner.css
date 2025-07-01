@@ -213,6 +213,36 @@
 
 
 }
+/* Promo Typing Animation */
+.promo-typing {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: black;
+  min-height: 1.6em;
+  letter-spacing: 0.5px;
+  font-family: 'Cinzel', serif;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.85);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(160, 132, 252, 0.07);
+  display: inline-block;
+  border: 1px solid #e9d5ff;
+}
+
+.promo-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
+  color: #a855f7;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     flex-wrap: wrap;

@@ -1,25 +1,42 @@
 .like-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 20px;
     padding: 2rem;
+    min-height: 80vh;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
+
 
 .like-card {
     position: relative;
-    border-radius: 8px;
+    width: 220px;
+    border-radius: 10px;
     overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
 }
+
+.like-card:hover {
+    transform: scale(1.03);
+}
+
 
 .like-image {
     width: 100%;
-    border-radius: 8px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
 .like-image:hover {
     transform: scale(1.05);
 }
+
 
 .like-icons {
     position: absolute;
@@ -28,19 +45,96 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    z-index: 10;
 }
 
 .like-icon,
 .share-icon {
-    background: #00000088;
-    color: white;
-    padding: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px;
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
+
+.like-icon:hover,
+.share-icon:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
 
 .like-icon.liked {
     color: red;
+    background-color: #fff;
+}
+
+
+.empty-like-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: #444;
+    animation: fadeIn 0.3s ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.empty-like-msg h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.empty-like-msg p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.discover-btn {
+    padding: 10px 20px;
+    background-color: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.discover-btn:hover {
+    background-color: #7c3aed;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .like-card {
+        width: 100%;
+    }
+
+    .like-grid {
+        padding: 1rem;
+        justify-content: center;
+    }
+
+    .like-image {
+        height: 220px;
+    }
 }

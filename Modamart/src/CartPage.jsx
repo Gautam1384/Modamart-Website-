@@ -1,7 +1,6 @@
-
 import React from 'react';
 import Navbar from './Navbar.jsx';
-import { useCart } from './context/CartContext.js';
+import { useCart } from './Context/CartContext.js';
 import { useNavigate } from 'react-router-dom';
 import './CartPage.css';
 import Footer from './Footer.jsx';
@@ -44,6 +43,7 @@ const CartPage = () => {
                         <div className="summary">
                             <h3>Total: ₹{getTotalPrice()}</h3>
                             <button onClick={handleGoBack}>Continue Shopping</button>
+                            <button onClick={() => navigate('/checkout')} style={{ marginLeft: 12 }}>Proceed to Checkout</button>
                         </div>
                     </>
                 )}
