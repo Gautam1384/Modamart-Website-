@@ -35,11 +35,7 @@ const PromoBanner = () => {
         <li><Link to="/category/men">MEN</Link></li>
         <li><Link to="/category/kids">KIDS</Link></li>
         <li><Link to="/category/unisex">UNISEX</Link></li>
-        <li className="store-link">
-          <FaStore style={{ marginRight: '6px' }} /> Find Store
-        </li>
       </ul>
-
       <div className="sub-navbar">
         <ul className="nav-link">
           <li>Bestsellers</li>

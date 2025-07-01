@@ -9,7 +9,6 @@
     transition: all 0.3s ease;
 }
 
-
 .like-card {
     position: relative;
     width: 220px;
@@ -18,12 +17,15 @@
     background: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 18px;
 }
 
 .like-card:hover {
     transform: scale(1.03);
 }
-
 
 .like-image {
     width: 100%;
@@ -36,7 +38,6 @@
 .like-image:hover {
     transform: scale(1.05);
 }
-
 
 .like-icons {
     position: absolute;
@@ -57,6 +58,8 @@
     font-size: 24px;
     cursor: pointer;
     transition: background 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .like-icon:hover,
@@ -64,12 +67,41 @@
     background: rgba(0, 0, 0, 0.9);
 }
 
-
 .like-icon.liked {
     color: red;
     background-color: #fff;
 }
 
+.like-desc {
+    padding: 12px 10px 10px 10px;
+    font-size: 1rem;
+    color: #444;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+    text-align: left;
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.like-title {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.like-price {
+    font-size: 1rem;
+    color: #a855f7;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.like-description {
+    display: none 
+}
 
 .empty-like-msg {
     display: flex;
@@ -137,4 +169,14 @@
     .like-image {
         height: 220px;
     }
+}
+
+/* --- ENSURE ICONS ARE ALWAYS VISIBLE ON CATEGORY PRODUCT CARDS TOO --- */
+/* If your category product cards use .product-card or .category-card, add: */
+.product-card .like-icon,
+.product-card .share-icon,
+.category-card .like-icon,
+.category-card .share-icon {
+    opacity: 1 !important;
+    visibility: visible !important;
 }

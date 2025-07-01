@@ -1,6 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import mockData from '../data/mockData';
+import mockDataWomen from '../data/mockDataWomen';
+import mockDataMen from '../data/mockDataMen';
+import mockDataKids from '../data/mockDataKids';
+import mockDataUnisex from '../data/mockDataUnisex';
 import { useCart } from '../Context/CartContext';
 import './CategoryPage.css';
 
@@ -16,8 +20,15 @@ const CategoryProductPage = () => {
   const navigate = useNavigate();
   const { cartItems, addToCart } = useCart();
 
-  // Find product by id
-  const product = mockData.find((item) => item.id === parseInt(id));
+  // Find product by id in all mock data arrays
+  const allProducts = [
+    ...mockData,
+    ...mockDataWomen,
+    ...mockDataMen,
+    ...mockDataKids,
+    ...mockDataUnisex,
+  ];
+  const product = allProducts.find((item) => item.id === parseInt(id));
   if (!product) return <p>Product not found.</p>;
 
   // Get category image
@@ -34,6 +45,20 @@ const CategoryProductPage = () => {
     };
     addToCart(productToAdd);
     navigate('/cart');
+  };
+
+  // Add this function for Buy Now
+  const handleBuyNow = () => {
+    if (!isInCart) {
+      const productToAdd = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: imageSrc,
+      };
+      addToCart(productToAdd);
+    }
+    navigate('/checkout');
   };
 
   return (
@@ -56,7 +81,8 @@ const CategoryProductPage = () => {
             ) : (
               <button className="cart-btn" onClick={handleAddToCart}>Add to Cart</button>
             )}
-            <button className="buy-btn">Buy Now</button>
+            {/* Add Buy Now button */}
+            <button className="buy-btn" onClick={handleBuyNow}>Buy Now</button>
           </div>
           <div className="go-back">
             <button onClick={() => navigate(-1)}>Go Back</button>

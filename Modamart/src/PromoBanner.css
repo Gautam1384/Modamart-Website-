@@ -50,10 +50,10 @@
 
 .nav-links li {
   font-size: 20px;
-  font-weight: bold;         /* Make text bold */
-  color: #111;               /* Pure black or near-black */
+  font-weight: bold;         
+  color: #111;               
   cursor: pointer;
-  padding: 6px 12px;         /* Add horizontal padding for better look */
+  padding: 6px 12px;       
   background: none;
   border-radius: 6px;
   border-bottom: 2px solid transparent;
@@ -216,8 +216,8 @@
 /* Promo Typing Animation */
 .promo-typing {
   font-size: 1.15rem;
-  font-weight: 600;
-  color: black;
+  font-weight: 800;
+  color: lightcoral;
   min-height: 1.6em;
   letter-spacing: 0.5px;
   font-family: 'Cinzel', serif;
@@ -227,7 +227,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(160, 132, 252, 0.07);
   display: inline-block;
-  border: 1px solid #e9d5ff;
+  border: black;
 }
 
 .promo-cursor {

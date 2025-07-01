@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 import { FaHeart, FaShareAlt } from 'react-icons/fa';
 import mockData from './data/mockData';
+import mockDataWomen from './data/mockDataWomen';
+import mockDataMen from './data/mockDataMen';
+import mockDataKids from './data/mockDataKids';
+import mockDataUnisex from './data/mockDataUnisex';
 import './LikeManager.css';
+// Import images from both folders
+const imageModules = import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
+const categoryImageModules = import.meta.glob('./assets/CategoryImage/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
 
-const images = Object.values(
-  import.meta.glob('./src/assets/Image/*.{jpg,jpeg,png,webp}', {
-    eager: true,
-    import: 'default',
-  })
-);
+const imageMap = {};
+const bannerImageNames = new Set();
+Object.keys(imageModules).forEach((path) => {
+  const fileName = path.split('/').pop();
+  imageMap[fileName] = imageModules[path];
+  bannerImageNames.add(fileName);
+});
+Object.keys(categoryImageModules).forEach((path) => {
+  const fileName = path.split('/').pop();
+  if (!imageMap[fileName]) {
+    imageMap[fileName] = categoryImageModules[path];
+  }
+});
 
 const LikeManager = ({ asPage = false }) => {
   const [liked, setLiked] = useState(() => {
     const stored = localStorage.getItem('likedProducts');
     return stored ? JSON.parse(stored) : [];
   });
-
-  
 
   const toggleLike = (id) => {
     const updatedLikes = liked.includes(id)
@@ -30,10 +42,17 @@ const LikeManager = ({ asPage = false }) => {
     );
   };
 
-  const filteredData = asPage
-    ? mockData.filter((item) => liked.includes(item.id))
-    : mockData;
+  const allMockData = [
+    ...mockData,
+    ...mockDataWomen,
+    ...mockDataMen,
+    ...mockDataKids,
+    ...mockDataUnisex,
+  ];
 
+  const filteredData = asPage
+    ? allMockData.filter((item) => liked.includes(item.id))
+    : allMockData;
 
   return (
     <div className="like-grid">
@@ -47,17 +66,13 @@ const LikeManager = ({ asPage = false }) => {
         </div>
       ) : (
         filteredData.map((item) => {
-          const imgIndex = item.id;
-          const imageSrc = images[imgIndex] || '';
-
           return (
-            <div className="like-card" key={item.id}>
-              {imageSrc ? (
-                <img src={imageSrc} alt={item.title} className="like-image" />
-              ) : (
-                <p>Image not found</p>
-              )}
-
+            <div className="like-card category-style" key={item.id}>
+              <img
+                src={imageMap[item.imageName] || ''}
+                alt={item.title}
+                className="like-image"
+              />
               <div className="like-icons">
                 <FaHeart
                   onClick={() => toggleLike(item.id)}
@@ -74,10 +89,16 @@ const LikeManager = ({ asPage = false }) => {
                   className="share-icon"
                 />
               </div>
+              {/* Card bottom: show title & price for banner, full info for category */}
+              <div className="like-desc">
+                <div className="like-title">{item.title}</div>
+                <div className="like-price">₹{item.price}</div>
+              </div>
             </div>
           );
         })
       )}
+
     </div>
   );
 };

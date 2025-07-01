@@ -2,14 +2,9 @@
   "dependencies": {
     "icons": "^1.0.0",
     "react": "^19.1.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "react-dom": "^19.1.0"
-=======
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3"
->>>>>>> 137470c6da907f3de99aa8a0ae1ac087b42d39fc
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
@@ -21,8 +16,5 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.5"
-=======
-    "react-icons": "^5.5.0"
->>>>>>> b0eca9e ({commit_message})
   }
 }

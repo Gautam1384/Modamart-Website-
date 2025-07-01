@@ -31,9 +31,9 @@ const CartPage = () => {
                         <ul className="cart-list">
                             {cartItems.map((item, index) => (
                                 <li key={index} className="cart-item">
-                                    <img src={item.image} alt={item.name} />
+                                    <img src={item.image} alt={item.title} />
                                     <div className="details">
-                                        <h4>{item.name}</h4>
+                                        <h4>{item.title}</h4>
                                         <p>₹{item.price}</p>
                                         <button onClick={() => removeFromCart(item.id)}>Remove</button>
                                     </div>
@@ -54,3 +54,54 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

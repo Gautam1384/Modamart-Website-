@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import mockData from '../data/mockData';
+import { FaHeart, FaShareAlt } from 'react-icons/fa';
+import mockDataWomen from '../data/mockDataWomen';
+import mockDataMen from '../data/mockDataMen';
+import mockDataKids from '../data/mockDataKids';
+import mockDataUnisex from '../data/mockDataUnisex';
 import FilterCategory from '../ProductList/FilterCategory';
+import { getFavourites, toggleFavourite } from '../Utils/favourites';
 import './CategoryPage.css';
 
 const rawImages = import.meta.glob('/src/assets/CategoryImage/*.{jpg,jpeg,png}', { eager: true });
@@ -11,10 +16,17 @@ const images = Object.entries(rawImages).reduce((acc, [path, module]) => {
   return acc;
 }, {});
 
+const priceRanges = [
+  { label: 'Under ₹1000', test: (price) => price < 1000 },
+  { label: '₹1000 - ₹5000', test: (price) => price >= 1000 && price <= 5000 },
+  { label: 'Above ₹5000', test: (price) => price > 5000 },
+];
+
 const CategoryPage = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
 
+  // Controlled filter state
   const [selectedFilters, setSelectedFilters] = useState({
     price: [],
     subCategory: [],
@@ -26,7 +38,9 @@ const CategoryPage = () => {
   });
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [likedIds, setLikedIds] = useState(getFavourites());
 
+  // Controlled checkbox handler
   const handleFilterChange = (type, value) => {
     setSelectedFilters((prev) => {
       const isSelected = prev[type]?.includes(value);
@@ -37,6 +51,7 @@ const CategoryPage = () => {
     });
   };
 
+  // Subcategories by category
   const getSubCategories = () => {
     switch (categoryName.toLowerCase()) {
       case 'men':
@@ -56,19 +71,37 @@ const CategoryPage = () => {
     }
   };
 
+  // Filtering logic
   const applyFilters = () => {
-    let results = mockData.filter(
-      (item) => item.category.toLowerCase() === categoryName.toLowerCase()
+    // Select the correct mock data based on categoryName
+    let dataSource;
+    switch (categoryName.toLowerCase()) {
+      case 'men':
+        dataSource = mockDataMen;
+        break;
+      case 'women':
+        dataSource = mockDataWomen;
+        break;
+      case 'kids':
+        dataSource = mockDataKids;
+        break;
+      case 'unisex':
+        dataSource = mockDataUnisex;
+        break;
+      default:
+        dataSource = [];
+    }
+
+    let results = dataSource.filter(
+      (item) => item.category && item.category.toLowerCase() === categoryName.toLowerCase()
     );
 
     // Price filter
     if (selectedFilters.price.length > 0) {
       results = results.filter((product) =>
         selectedFilters.price.some((range) => {
-          if (range === 'Under ₹1000') return product.price < 1000;
-          if (range === '₹1000 - ₹5000') return product.price >= 1000 && product.price <= 5000;
-          if (range === 'Above ₹5000') return product.price > 5000;
-          return true;
+          const rangeObj = priceRanges.find((r) => r.label === range);
+          return rangeObj ? rangeObj.test(product.price) : true;
         })
       );
     }
@@ -120,10 +153,31 @@ const CategoryPage = () => {
 
   useEffect(() => {
     applyFilters();
+    // eslint-disable-next-line
   }, [selectedFilters, categoryName]);
+
+  useEffect(() => {
+    const handler = () => setLikedIds(getFavourites());
+    window.addEventListener('likedCountUpdated', handler);
+    return () => window.removeEventListener('likedCountUpdated', handler);
+  }, []);
 
   // Find image for product (fallback to empty string if not found)
   const getProductImage = (product) => images[product.imageName] || '';
+
+  const handleShare = (product) => {
+    if (navigator.share) {
+      navigator.share({
+        title: product.title,
+        text: product.description,
+        url: window.location.origin + `/category-product/${product.id}`,
+        files: undefined
+      });
+    } else {
+      const shareUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + window.location.origin + `/category-product/${product.id}`)}`;
+      window.open(shareUrl, '_blank');
+    }
+  };
 
   return (
     <div className="category-page">
@@ -133,13 +187,14 @@ const CategoryPage = () => {
           <h3>FILTERS</h3>
 
           <FilterCategory title="Price">
-            {['Under ₹1000', '₹1000 - ₹5000', 'Above ₹5000'].map((range) => (
-              <label key={range}>
+            {priceRanges.map((range) => (
+              <label key={range.label}>
                 <input
                   type="checkbox"
-                  onChange={() => handleFilterChange('price', range)}
+                  checked={selectedFilters.price.includes(range.label)}
+                  onChange={() => handleFilterChange('price', range.label)}
                 />
-                {range}
+                {range.label}
               </label>
             ))}
           </FilterCategory>
@@ -149,6 +204,7 @@ const CategoryPage = () => {
               <label key={item}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.subCategory.includes(item)}
                   onChange={() => handleFilterChange('subCategory', item)}
                 />
                 {item}
@@ -165,6 +221,7 @@ const CategoryPage = () => {
               <label key={color}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.color.includes(color)}
                   onChange={() => handleFilterChange('color', color)}
                 />
                 {color}
@@ -177,6 +234,7 @@ const CategoryPage = () => {
               <label key={size}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.size.includes(size)}
                   onChange={() => handleFilterChange('size', size)}
                 />
                 {size}
@@ -189,6 +247,7 @@ const CategoryPage = () => {
               <label key={pattern}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.pattern.includes(pattern)}
                   onChange={() => handleFilterChange('pattern', pattern)}
                 />
                 {pattern}
@@ -201,6 +260,7 @@ const CategoryPage = () => {
               <label key={occ}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.occasion.includes(occ)}
                   onChange={() => handleFilterChange('occasion', occ)}
                 />
                 {occ}
@@ -213,6 +273,7 @@ const CategoryPage = () => {
               <label key={embellish}>
                 <input
                   type="checkbox"
+                  checked={selectedFilters.embellishment.includes(embellish)}
                   onChange={() => handleFilterChange('embellishment', embellish)}
                 />
                 {embellish}
@@ -226,14 +287,62 @@ const CategoryPage = () => {
             <div
               key={product.id}
               className="product-card"
-              style={{ cursor: 'pointer' }}
-              onClick={() => navigate(`/category-product/${product.id}`)} // <-- update this line
+              style={{ cursor: 'pointer', position: 'relative' }}
+              onClick={() => navigate(`/category-product/${product.id}`)}
             >
               <img
                 src={getProductImage(product)}
                 alt={product.title}
                 className="product-img"
               />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 11,
+                  right: 18,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  gap: 6,
+                  zIndex: 2,
+                }}
+              >
+                <FaHeart
+                  className="like-icon"
+                  color={likedIds.includes(product.id) ? 'red' : 'gray'}
+                  style={{
+                    background: 'black',
+                    borderRadius: '50%',
+                    padding: 6,
+                    fontSize: 22,
+                    cursor: 'pointer',
+                    opacity: 1,
+                    visibility: 'visible',
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavourite(product.id);
+                    setLikedIds(getFavourites());
+                  }}
+                />
+                <FaShareAlt
+                  className="share-icon"
+                  style={{
+                    background: 'black',
+                    borderRadius: '50%',
+                    padding: 6,
+                    fontSize: 22,
+                    cursor: 'pointer',
+                    opacity: 1,
+                    visibility: 'visible',
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleShare(product);
+                  }}
+                  title="Share"
+                />
+              </div>
               <h3>{product.title}</h3>
               <p>₹{product.price}</p>
             </div>
@@ -248,6 +357,19 @@ const CategoryPage = () => {
 };
 
 export default CategoryPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
