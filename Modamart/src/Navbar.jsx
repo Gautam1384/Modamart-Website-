@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from './Context/CartContext';
 import './Navbar.css';
-import {FaHome, FaUser, FaHeart, FaShoppingCart, FaVideo, FaWhatsapp, FaBars } from 'react-icons/fa';
+import { FaHome, FaUser, FaHeart, FaShoppingCart, FaWhatsapp, FaBars, FaSignOutAlt } from 'react-icons/fa';
 import AuthModal from './AuthModal';
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
   const dynamic = [
-    "Explore Modamart’s exclusive collection of regal outfits for everyone",
+    "Explore Modamart's exclusive collection of regal outfits for everyone",
     "Royal fashion now just a click away all over India.",
     "Make every occasion majestic",
     "Traditional elegance meets modern luxury - Only at Modamart.",
     "Shop Modamart's royal wear collection today"
   ];
-
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -29,14 +28,17 @@ const Navbar = () => {
     return stored ? JSON.parse(stored).length : 0;
   });
   const [authOpen, setAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
+  const [profileDropdown, setProfileDropdown] = useState(false);
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
+
+  const profileRef = useRef(null);
 
   useEffect(() => {
     const updateLikeCount = (e) => {
-      setLikeCount(e.detail);  
+      setLikeCount(e.detail);
     };
-
     window.addEventListener('likedCountUpdated', updateLikeCount);
-
     return () => {
       window.removeEventListener('likedCountUpdated', updateLikeCount);
     };
@@ -61,7 +63,6 @@ const Navbar = () => {
     }
   }, [charIndex, index]);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIsSliding(false);
@@ -74,20 +75,18 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const stored = localStorage.getItem('likedProducts');
-    setLikeCount(stored ? JSON.parse(stored).length : 0);
-  }, []);
-
-
-  useEffect(() => {
-    const handleLikeUpdate = (e) => {
-      setLikeCount(e.detail);
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileDropdown(false);
+      }
     };
-    window.addEventListener('likedCountUpdated', handleLikeUpdate);
+    if (profileDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
     return () => {
-      window.removeEventListener('likedCountUpdated', handleLikeUpdate);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [profileDropdown]);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -97,7 +96,25 @@ const Navbar = () => {
     setShowDropdown(false);
   };
 
-  const {cartItems} = useCart();
+  const { cartItems } = useCart();
+
+  // Simulate user authentication state (replace with real auth logic)
+  const [IsAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Handle sign in/up modal open
+  const handleAuthOpen = (mode) => {
+    setAuthMode(mode);
+    setAuthOpen(true);
+    setProfileDropdown(false);
+  };
+
+  // Handle sign out
+  const handleSignOut = () => {
+    setIsAuthenticated(false);
+    setShowSignOutModal(false);
+    setProfileDropdown(false);
+    navigate('/');
+  };
 
   return (
     <>
@@ -120,7 +137,7 @@ const Navbar = () => {
 
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
             <div className="navbar-icons">
-              <Link to="/"><FaHome className="nav-icon" title="Home"/></Link>
+              <Link to="/"><FaHome className="nav-icon" title="Home" /></Link>
               <FaWhatsapp className="nav-icon" />
 
               <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
@@ -130,19 +147,47 @@ const Navbar = () => {
                 )}
               </div>
 
-                {/* <div className="cart-icon">
-                   */}
-                   <div onClick={()=> navigate('/cart')} className='cart-icon-container'>
-              <FaShoppingCart className="nav-icon" />
-              {cartItems.length > 0 && (
-                <span className="cart-badge">{cartItems.length}</span>
-              )}
-                </div>
-                 <FaUser
-          className="nav-icon"
-          onClick={() => setAuthOpen(true)}
-          style={{ cursor: 'pointer' }}
-        />
+              <div onClick={() => navigate('/cart')} className='cart-icon-container'>
+                <FaShoppingCart className="nav-icon" />
+                {cartItems.length > 0 && (
+                  <span className="cart-badge">{cartItems.length}</span>
+                )}
+              </div>
+
+              {/* Profile Dropdown */}
+              <div className="profile-dropdown-container" ref={profileRef}>
+                <FaUser
+                  className="nav-icon profile-icon"
+                  onClick={() => setProfileDropdown((prev) => !prev)}
+                  style={{ cursor: 'pointer' }}
+                />
+                {profileDropdown && (
+                  <div className="profile-dropdown-menu">
+                    <button
+                      className="profile-dropdown-item"
+                      onClick={() => handleAuthOpen('signin')}
+                    >
+                      Sign In
+                    </button>
+                    <button
+                      className="profile-dropdown-item"
+                      onClick={() => handleAuthOpen('signup')}
+                    >
+                      Sign Up
+                    </button>
+                    <button
+                      className="profile-dropdown-item signout"
+                      onClick={() => {
+                        setShowSignOutModal(true);
+                        setProfileDropdown(false);
+                      }}
+                    >
+                      <FaSignOutAlt style={{ marginRight: 8 }} />
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="dropdown" onClick={toggleDropdown}>
               {showDropdown && (
@@ -165,7 +210,30 @@ const Navbar = () => {
           </nav>
         </header>
       </div>
-      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={authOpen}
+        onClose={() => setAuthOpen(false)}
+        mode={authMode}
+      />
+
+      {/* Sign Out Confirmation Modal */}
+      {showSignOutModal && (
+        <div className="signout-modal-overlay" onClick={() => setShowSignOutModal(false)}>
+          <div className="signout-modal" onClick={e => e.stopPropagation()}>
+            <h3>Are you sure you want to sign out?</h3>
+            <div className="signout-modal-actions">
+              <button className="cancel-btn" onClick={() => setShowSignOutModal(false)}>
+                Cancel
+              </button>
+              <button className="confirm-signout-btn" onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
