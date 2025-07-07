@@ -5,7 +5,7 @@ import App from './App';
 import ProductPage from './ProductPage';
 import CartPage from './CartPage';
 import CheckoutForm from './CheckoutForm.jsx';
-import { CartProvider } from './Context/CartContext.js';
+import { CartProvider } from './Context/CartContext.jsx';
 import ScrollTop from './ScrollTop.jsx';
 import Login from './Login.jsx';
 

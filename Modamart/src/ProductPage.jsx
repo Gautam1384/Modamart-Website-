@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
-import { useCart } from './Context/CartContext.js';
-// import Footer from './Footer.jsx';
+import { useCart } from './Context/CartContext.jsx';
 import mockData from './data/mockData';
 import './ProductPage.css';
 import { FaHeart, FaShareAlt } from 'react-icons/fa';
@@ -144,7 +143,6 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </div>
-                {/* <Footer /> */}
             </div>
         </>
     );

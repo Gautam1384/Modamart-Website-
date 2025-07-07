@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
-import { useCart } from './Context/CartContext.js';
+import { useCart } from './Context/CartContext.jsx';
 import './CartPage.css';
 
 const initialState = {

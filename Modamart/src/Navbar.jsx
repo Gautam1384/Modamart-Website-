@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useCart } from './Context/CartContext';
+import { useCart } from './Context/CartContext.jsx';
 import './Navbar.css';
 import { FaHome, FaUser, FaHeart, FaShoppingCart, FaWhatsapp, FaBars, FaSignOutAlt } from 'react-icons/fa';
 import AuthModal from './AuthModal';

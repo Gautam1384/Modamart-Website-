@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Banner.css';
@@ -152,10 +151,22 @@ const Banner = () => {
                             padding: 6,
                             fontSize: 22
                           }}
-                          onClick={(e) => {
+                          onClick={e => {
                             e.stopPropagation();
-                            alert(`Share ${ product.title }`);
+                            const shareUrl = window.location.origin + `/product/${product.id}`;
+                            if (navigator.share) {
+                              navigator.share({
+                                title: product.title,
+                                text: product.description,
+                                url: shareUrl,
+                              });
+                            } else {
+                              // WhatsApp fallback
+                              const waUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + shareUrl)}`;
+                              window.open(waUrl, '_blank');
+                            }
                           }}
+                          title="Share"
                         />
                       </div>
                     </div>

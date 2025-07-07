@@ -6,33 +6,12 @@
   box-sizing: border-box;
 }
 
-.sticky-container{
+.sticky-container {
   position: sticky;
   top: 0;
   z-index: 1000;
   background-color: white;
 }
-
-.Modamart-dynamic {
-  width: 100%;
-  background: #000;
-  padding: 8px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  /* min-height: 36px; */
-}
-
-.modamart-slide {
-  display: inline-block;
-  white-space: nowrap;
-  color: #fff;
-  font-size: 1rem;
-  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
 
 .navbar-container {
   display: flex;
@@ -50,7 +29,6 @@
 .navbar-icons {
   color: black;
 }
-
 
 .logo {
   font-family: 'Cinzel', serif;
@@ -78,7 +56,7 @@
 
 .search-box button {
   padding: 10px 16px;
-  background-color: #c084fc;
+  background-color: magenta;
   border: none;
   color: white;
   border-radius: 0 6px 6px 0;
@@ -93,6 +71,8 @@
   display: flex;
   align-items: center;
   gap: 25px;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .Anchor {
@@ -134,7 +114,7 @@
   display: block;
 }
 
-Mega dropdown specific .dropdown-content.mega {
+.dropdown-content.mega {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 2rem;
@@ -230,7 +210,7 @@ Mega dropdown specific .dropdown-content.mega {
 }
 .profile-dropdown-item.signout:hover {
   background: linear-gradient(90deg, #fee2e2 0%, #f3e8ff 100%);
-   color: #b91c1c; 
+  color: #b91c1c; 
 }
 
 /* Sign Out Modal */
@@ -289,6 +269,38 @@ Mega dropdown specific .dropdown-content.mega {
   background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
 }
 
+/* Modamart Dynamic Slider */
+.Modamart-dynamic {
+  width: 100%;
+  background: black;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 36px;
+}
+
+.modamart-slide {
+  display: inline-block;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1rem;
+  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
@@ -306,6 +318,38 @@ Mega dropdown specific .dropdown-content.mega {
     gap: 10px;
     align-items: flex-start;
   }
+
+  .hamburger {
+    display: block;
+  }
+
+  .anchor.open {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .anchor.open .Anchor {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Modamart-dynamic {
+    padding: 6px 4px;
+    min-height: 28px;
+  }
+  .modamart-slide {
+    font-size: 0.85rem;
+    padding: 0 4px;
+  }
 }
 
 @media (max-width: 344px) {
@@ -317,7 +361,7 @@ Mega dropdown specific .dropdown-content.mega {
   }
 
   .logo {
-    font-size: 1.6rem;
+    font-weight: bolder;
   }
 
   .search-box {
@@ -366,48 +410,6 @@ Mega dropdown specific .dropdown-content.mega {
   }
 }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .anchor.open {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: white;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-
-  .anchor.open .Anchor {
-    margin-bottom: 10px;
-  }
-}
-
-.anchor {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-@media (max-width:768px) {
-  .anchor {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-}
-
 @media (min-width:769px) {
   .anchor {
     flex-direction: row;
@@ -416,47 +418,5 @@ Mega dropdown specific .dropdown-content.mega {
 
   .hamburger {
     display: none;
-  }
-
-}
-
-.Modamart-dynamic {
-  width: 100%;
-  background: #000;
-  padding: 8px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  min-height: 36px;
-}
-
-.modamart-slide {
-  display: inline-block;
-  white-space: nowrap;
-  color: #fff;
-  font-size: 1rem;
-  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0.2;
-  }
-  to {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-}
-
-@media (max-width: 600px) {
-  .Modamart-dynamic {
-    padding: 6px 4px;
-    min-height: 28px;
-  }
-  .modamart-slide {
-    font-size: 0.85rem;
-    padding: 0 4px;
   }
 }
