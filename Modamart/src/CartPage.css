@@ -1,3 +1,6 @@
+
+/* -------------------- CART PAGE STYLING -------------------- */
+
 .cart-page {
   padding: 2rem;
   max-width: 1200px;
@@ -97,7 +100,7 @@
   padding: 12px 20px;
   margin: 0.5rem;
   font-size: 1rem;
-  background-color: blue;
+  background-color: #6366f1;
   color: white;
   border: none;
   border-radius: 8px;
@@ -110,14 +113,14 @@
   background-color: #4f46e5;
 }
 
-/* Flipkart-style empty cart icon */
+/* -------------------- FLIPKART-STYLE EMPTY CART -------------------- */
+
 .flipkart-empty-cart {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 70vh;
-  background-color: #f5f5f5;
   padding: 2rem;
   text-align: center;
   border-radius: 12px;
@@ -245,6 +248,121 @@
   }
 }
 
+
+.checkout-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+  
+}
+
+.checkout-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.checkout-form-columns {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.checkout-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+.checkout-column h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  color: #333;
+}
+
+.checkout-column input,
+.checkout-column select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+  transition: all 0.3s ease;
+}
+
+.checkout-column input:focus,
+.checkout-column select:focus {
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.8rem;
+  margin-bottom: 1rem;
+}
+
+.center-btn {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.place-order-btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  background-color:gold;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background-color: #388e3c;
+}
+
+.order-summary-box {
+  margin-top: 2rem;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.order-summary-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.order-summary-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.order-summary-box li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-summary-box h4 {
+  font-weight: bold;
+  color: #000;
+  margin-top: 1rem;
+}
+
+/* -------------------- MOBILE RESPONSIVENESS -------------------- */
+
 @media (max-width: 768px) {
   .cart-item {
     flex-direction: column;
@@ -256,8 +374,20 @@
     margin-bottom: 1rem;
   }
 
-  .summary {
+  .summary,
+  .flipkart-empty-cart,
+  .checkout-container {
     width: 100%;
+    padding: 1rem;
+  }
+
+  .place-order-btn {
+    width: 80%;
+  }
+
+  .cart-icon-face {
+    width: 120px;
+    height: 100px;
   }
 
   .flipkart-empty-message {
@@ -268,8 +398,7 @@
     width: 80%;
   }
 
-  .cart-icon-face {
-    width: 120px;
-    height: 100px;
+  .checkout-form-columns {
+    flex-direction: column;
   }
 }

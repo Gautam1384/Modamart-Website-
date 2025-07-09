@@ -1,6 +1,5 @@
 /* Full-Width Banner Container */
 .banner {
-  width: 100vw;
   margin: 0 auto;
   background: linear-gradient(120deg, #f8e1f4 0%, #fef6f0 100%);
   border-radius: 0 0 22px 22px;
@@ -54,7 +53,7 @@
 
 .banner-text h2 {
   font-size: 2.5rem;
-  color: #6a0572;
+  color: magenta;
   margin-bottom: 1rem;
   font-family: 'Cinzel', serif;
   letter-spacing: 1px;
@@ -67,7 +66,7 @@
 
 .tagline {
   font-size: 1.15rem;
-  color: #7c3aed;
+  color: magenta;
   font-family: 'Cinzel', serif;
   font-weight: 500;
   display: block;
@@ -76,7 +75,7 @@
 /* Button */
 .banner-text button {
   padding: 0.7rem 1.5rem;
-  background-color: #c084fc;
+  background-color: magenta;
   color: white;
   border: none;
   border-radius: 8px;

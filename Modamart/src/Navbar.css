@@ -35,7 +35,7 @@
   font-size: 2rem;
   color: #333;
   font-weight: bold;
-  left: 40%;
+  left: auto;
 }
 
 .search-box {
@@ -360,9 +360,7 @@
     padding: 1rem;
   }
 
-  .logo {
-    font-weight: bolder;
-  }
+  
 
   .search-box {
     width: 100%;

@@ -9,7 +9,6 @@ import './LikeManager.css';
 // Import images from both folders
 const imageModules = import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
 const categoryImageModules = import.meta.glob('./assets/CategoryImage/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
-
 const imageMap = {};
 const bannerImageNames = new Set();
 Object.keys(imageModules).forEach((path) => {

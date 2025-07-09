@@ -1,6 +1,7 @@
+
 .promo-banner {
  position: sticky;
-  top: 86px;
+  top: 100px;
   z-index: 999;
   background-color: #fff;
   padding: 10px 20px;
@@ -65,15 +66,13 @@
 }
 
 .nav-links li a {
-  text-decoration: none; /* Remove underline */
-  color: inherit;        /* Inherit the black color from parent li */
-  font-weight: inherit;  /* Inherit boldness */
-  display: block;        /* Make the link fill the li for better click area */
+  text-decoration: none; 
+  color: inherit;        
+  font-weight: inherit;  
+  display: block;        
 }
 
 .nav-links li:hover {
-  /* color: #d6249f;
-  border-bottom: 2px solid #c084fc; */
   color: #a855f7;
 }
 
@@ -114,7 +113,7 @@
 
 .logo {
   position: absolute;
-  left: 0;
+  left: auto;
   font-size: 28px;
   font-weight: bold;
 
