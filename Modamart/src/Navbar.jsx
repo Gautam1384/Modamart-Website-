@@ -165,6 +165,15 @@ const Navbar = () => {
                   <div className="profile-dropdown-menu">
                     <button
                       className="profile-dropdown-item"
+                      onClick={() => {
+                        setProfileDropdown(false);
+                        navigate('/account');
+                      }}
+                    >
+                      My Account
+                    </button>
+                    <button
+                      className="profile-dropdown-item"
                       onClick={() => handleAuthOpen('signin')}
                     >
                       Sign In

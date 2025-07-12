@@ -1,8 +1,8 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 import { useCart } from './Context/CartContext.jsx';
+import { useLocation } from 'react-router-dom';
 import './CartPage.css';
 
 const initialState = {
@@ -20,11 +20,42 @@ const initialState = {
 
 const CheckoutForm = () => {
   const { cartItems } = useCart();
+  const location = useLocation();
+  const selectedProduct = location.state?.product || null;
+
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  const getTotal = () => cartItems.reduce((total, item) => total + item.price, 0);
+  // Load saved addresses from localStorage
+  const [savedAddresses, setSavedAddresses] = useState([]);
+  const [selectedSavedAddress, setSelectedSavedAddress] = useState('');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('savedAddresses');
+    setSavedAddresses(stored ? JSON.parse(stored) : []);
+  }, []);
+
+  // When a saved address is selected, fill the form
+  useEffect(() => {
+    if (selectedSavedAddress !== '') {
+      const addr = savedAddresses[selectedSavedAddress];
+      if (addr) {
+        setForm((prev) => ({
+          ...prev,
+          address: `${addr.line1}${addr.line2 ? ', ' + addr.line2 : ''}`,
+          city: addr.city,
+          zip: addr.zip,
+        }));
+      }
+    }
+  }, [selectedSavedAddress, savedAddresses]);
+
+  // Total based on cart or selected product
+  const getTotal = () =>
+    selectedProduct
+      ? selectedProduct.price
+      : cartItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
 
   const validate = () => {
     const newErrors = {};
@@ -61,8 +92,13 @@ const CheckoutForm = () => {
         <div className="cart-page">
           <div className="checkout-success">
             <h2>🎉 Thank you for your order!</h2>
-            <p>Your payment of ₹{getTotal()} has been successfully processed.</p>
-            <button className="go-back-btn" onClick={() => window.location.href = '/'}>
+            <p>
+              Your payment of ₹{getTotal()} has been successfully processed.
+            </p>
+            <button
+              className="go-back-btn"
+              onClick={() => window.location.href = '/'}
+            >
               Continue Shopping
             </button>
           </div>
@@ -80,10 +116,10 @@ const CheckoutForm = () => {
         <div className="checkout-container">
           <form onSubmit={handleSubmit}>
             <div className="checkout-form-columns">
-
               {/* Shipping Info */}
               <div className="checkout-column">
                 <h3>Shipping Information</h3>
+                {/* Address Inputs */}
                 <input name="name" placeholder="Full Name" value={form.name} onChange={handleChange} />
                 {errors.name && <div className="error">{errors.name}</div>}
                 <input name="address" placeholder="Street Address" value={form.address} onChange={handleChange} />
@@ -118,8 +154,24 @@ const CheckoutForm = () => {
               </div>
             </div>
 
-            {/* Place Order Button */}
-            <div className="center-btn">
+            {/* Address Dropdown and Place Order Button side by side */}
+            <div className="checkout-actions-row">
+              {savedAddresses.length > 0 && (
+                <div className="checkout-address-dropdown">
+                  <label style={{ fontWeight: 600, color: '#6366f1' }}>Select Saved Address:</label>
+                  <select
+                    value={selectedSavedAddress}
+                    onChange={(e) => setSelectedSavedAddress(e.target.value)}
+                  >
+                    <option value="">-- Select Address --</option>
+                    {savedAddresses.map((addr, idx) => (
+                      <option key={idx} value={idx}>
+                        {addr.line1}{addr.line2 ? ', ' + addr.line2 : ''}, {addr.city}, {addr.state} - {addr.zip}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
               <button type="submit" className="place-order-btn">🛍 Place Order</button>
             </div>
           </form>
@@ -128,9 +180,15 @@ const CheckoutForm = () => {
           <div className="order-summary-box">
             <h3>Order Summary</h3>
             <ul>
-              {cartItems.map((item, idx) => (
-                <li key={idx}>{item.title} — ₹{item.price}</li>
-              ))}
+              {selectedProduct ? (
+                <li>{selectedProduct.title} — ₹{selectedProduct.price}</li>
+              ) : (
+                cartItems.map((item, idx) => (
+                  <li key={idx}>
+                    {item.title} * {item.quantity} — ₹{item.price * (item.quantity || 1)}
+                  </li>
+                ))
+              )}
             </ul>
             <h4>Total: ₹{getTotal()}</h4>
           </div>
@@ -142,9 +200,6 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
-
-
-
 
 
 

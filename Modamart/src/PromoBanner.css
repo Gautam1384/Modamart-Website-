@@ -158,10 +158,10 @@
 
 .nav-links li {
   font-size: 20px;
-  font-weight: bold;         /* Make text bold */
-  color: #111;               /* Pure black or near-black */
+  font-weight: bold;         
+  color: #111;               
   cursor: pointer;
-  padding: 6px 12px;         /* Add horizontal padding for better look */
+  padding: 6px 12px;         
   background: none;
   border-radius: 6px;
   border-bottom: 2px solid transparent;

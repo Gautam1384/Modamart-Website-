@@ -35,6 +35,7 @@ const PromoBanner = () => {
         <li><Link to="/category/men">MEN</Link></li>
         <li><Link to="/category/kids">KIDS</Link></li>
         <li><Link to="/category/unisex">UNISEX</Link></li>
+         <li><Link to="/category/accessories">ACCESSORIES</Link></li>
       </ul>
       <div className="sub-navbar">
         <ul className="nav-link">

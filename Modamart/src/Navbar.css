@@ -172,12 +172,13 @@
   border-radius: 14px;
   background: #fff;
   min-width: 200px;
-  padding: 0.7rem 0;
+  position: absolute;
+  top: 120%; /* Ensures dropdown appears below the icon */
+  right: 0;
+  z-index: 3001;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  z-index: 2000;
-  animation: fadeIn 0.18s;
 }
 
 .profile-dropdown-item {

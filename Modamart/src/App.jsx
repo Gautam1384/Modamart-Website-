@@ -11,6 +11,7 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import CheckoutForm from './CheckoutForm.jsx';
 import Footer from './Footer.jsx'; 
+import Address from './Address.jsx'; // Import the Address component
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/checkout" element={<CheckoutForm />} />
+        <Route path="/account" element={<Address />} /> {/* Add the new route here */}
         {/* 404 fallback */}
         <Route path="*" element={<h2 style={{ padding: '2rem' }}>404 - Page Not Found</h2>} />
       </Routes>

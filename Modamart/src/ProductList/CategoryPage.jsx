@@ -5,12 +5,19 @@ import mockDataWomen from '../data/mockDataWomen';
 import mockDataMen from '../data/mockDataMen';
 import mockDataKids from '../data/mockDataKids';
 import mockDataUnisex from '../data/mockDataUnisex';
+import mockDataAccessories from '../data/mockDataAcc';
 import FilterCategory from '../ProductList/FilterCategory';
 import { getFavourites, toggleFavourite } from '../Utils/favourites';
 import './CategoryPage.css';
-
 const rawImages = import.meta.glob('/src/assets/CategoryImage/*.{jpg,jpeg,png}', { eager: true });
 const images = Object.entries(rawImages).reduce((acc, [path, module]) => {
+  const filename = path.split('/').pop();
+  acc[filename] = module.default;
+  return acc;
+}, {});
+
+const rawAccImages = import.meta.glob('/src/assets/AccImage/*.{jpg,jpeg,png}', { eager: true });
+const accImages = Object.entries(rawAccImages).reduce((acc, [path, module]) => {
   const filename = path.split('/').pop();
   acc[filename] = module.default;
   return acc;
@@ -40,40 +47,21 @@ const CategoryPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [likedIds, setLikedIds] = useState(getFavourites());
 
-  // Controlled checkbox handler
-  const handleFilterChange = (type, value) => {
-    setSelectedFilters((prev) => {
-      const isSelected = prev[type]?.includes(value);
-      const updatedValues = isSelected
-        ? prev[type].filter((v) => v !== value)
-        : [...(prev[type] || []), value];
-      return { ...prev, [type]: updatedValues };
+  // Reset filters when category changes for smooth navigation
+  useEffect(() => {
+    setSelectedFilters({
+      price: [],
+      subCategory: [],
+      color: [],
+      size: [],
+      pattern: [],
+      occasion: [],
+      embellishment: [],
     });
-  };
-
-  // Subcategories by category
-  const getSubCategories = () => {
-    switch (categoryName.toLowerCase()) {
-      case 'men':
-        return ["Men's Kurta Set", 'Kurta Jacket Sets', "Groom's Sherwani", 'Tuxedo', 'Indo-western'];
-      case 'women':
-        return ['Sarees', 'Lehengas', 'Gowns', 'Kurtis', 'Co-ord Sets'];
-      case 'kids':
-        return ['Ethnic Wear', 'Western Wear', 'Kurta Pajama', 'Frocks', 'Gown Sets'];
-      case 'unisex':
-        return [
-          'Unisex Kurta Sets', 'Couple Ethnic Sets', 'Unisex Co-ord Sets',
-          'Unisex Jackets', 'Indo-western Wear', 'Sherwani Style Robes',
-          'Special Co-ords', 'Nehru Jackets'
-        ];
-      default:
-        return [];
-    }
-  };
+  }, [categoryName]);
 
   // Filtering logic
   const applyFilters = () => {
-    // Select the correct mock data based on categoryName
     let dataSource;
     switch (categoryName.toLowerCase()) {
       case 'men':
@@ -87,6 +75,9 @@ const CategoryPage = () => {
         break;
       case 'unisex':
         dataSource = mockDataUnisex;
+        break;
+      case 'accessories':
+        dataSource = mockDataAccessories;
         break;
       default:
         dataSource = [];
@@ -163,7 +154,12 @@ const CategoryPage = () => {
   }, []);
 
   // Find image for product (fallback to empty string if not found)
-  const getProductImage = (product) => images[product.imageName] || '';
+  const getProductImage = (product) => {
+    if (categoryName.toLowerCase() === 'accessories') {
+      return accImages[product.image] || '';
+    }
+    return images[product.imageName] || '';
+  };
 
   const handleShare = (product) => {
     if (navigator.share) {
@@ -176,6 +172,35 @@ const CategoryPage = () => {
     } else {
       const shareUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + window.location.origin + `/category-product/${product.id}`)}`;
       window.open(shareUrl, '_blank');
+    }
+  };
+
+  const handleFilterChange = (filterType, value) => {
+    setSelectedFilters((prev) => {
+      const arr = prev[filterType];
+      return {
+        ...prev,
+        [filterType]: arr.includes(value)
+          ? arr.filter((v) => v !== value)
+          : [...arr, value],
+      };
+    });
+  };
+
+  const getSubCategories = () => {
+    switch (categoryName.toLowerCase()) {
+      case 'women':
+        return [...new Set(mockDataWomen.map((item) => item.subCategory).filter(Boolean))];
+      case 'men':
+        return [...new Set(mockDataMen.map((item) => item.subCategory).filter(Boolean))];
+      case 'kids':
+        return [...new Set(mockDataKids.map((item) => item.subCategory).filter(Boolean))];
+      case 'unisex':
+        return [...new Set(mockDataUnisex.map((item) => item.subcategory || item.subCategory).filter(Boolean))];
+      case 'accessories':
+        return [...new Set(mockDataAccessories.map((item) => item.type).filter(Boolean))];
+      default:
+        return [];
     }
   };
 
@@ -292,7 +317,7 @@ const CategoryPage = () => {
             >
               <img
                 src={getProductImage(product)}
-                alt={product.title}
+                alt={product.title || product.name}
                 className="product-img"
               />
               <div
@@ -343,7 +368,7 @@ const CategoryPage = () => {
                   title="Share"
                 />
               </div>
-              <h3>{product.title}</h3>
+              <h3>{product.title || product.name}</h3>
               <p>₹{product.price}</p>
             </div>
           ))}

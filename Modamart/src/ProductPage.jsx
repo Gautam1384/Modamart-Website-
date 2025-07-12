@@ -49,10 +49,10 @@ const ProductPage = () => {
                 title: product.title,
                 text: product.description,
                 url: window.location.href,
-                files: undefined // images can't be shared directly in most browsers, but the URL will be shared
+                files: undefined 
             });
         } else {
-            // fallback: open WhatsApp share
+            
             const shareUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + window.location.href)}`;
             window.open(shareUrl, '_blank');
         }
