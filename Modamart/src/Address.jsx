@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import './Address.css';
 
@@ -14,7 +14,7 @@ const Address = () => {
     line2: '',
     city: '',
     state: '',
-    zip: '',
+    pin: '',
   });
 
   const [savedAddresses, setSavedAddresses] = useState(() => {
@@ -52,7 +52,7 @@ const Address = () => {
       line2: '',
       city: '',
       state: '',
-      zip: '',
+      pin: '',
     });
   };
 
@@ -160,13 +160,13 @@ const Address = () => {
                 placeholder="Enter your state"
                 required
               />
-              <label>ZIP Code:</label>
+              <label>PIN Code:</label>
               <input
                 type="text"
                 name="zip"
                 value={address.zip}
                 onChange={handleAddressChange}
-                placeholder="Enter your ZIP code"
+                placeholder="Enter your PIN code"
                 required
               />
               <button type="submit">Save Address</button>

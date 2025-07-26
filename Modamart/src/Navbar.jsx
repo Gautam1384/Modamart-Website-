@@ -28,7 +28,7 @@ const Navbar = () => {
     return stored ? JSON.parse(stored).length : 0;
   });
   const [authOpen, setAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
+  const [authMode] = useState('signin'); // 'signin' or 'signup'
   const [profileDropdown, setProfileDropdown] = useState(false);
   const [showSignOutModal, setShowSignOutModal] = useState(false);
 
@@ -98,19 +98,8 @@ const Navbar = () => {
 
   const { cartItems } = useCart();
 
-  // Simulate user authentication state (replace with real auth logic)
-  const [IsAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Handle sign in/up modal open
-  const handleAuthOpen = (mode) => {
-    setAuthMode(mode);
-    setAuthOpen(true);
-    setProfileDropdown(false);
-  };
-
-  // Handle sign out
   const handleSignOut = () => {
-    setIsAuthenticated(false);
+    localStorage.removeItem('modamartUser');
     setShowSignOutModal(false);
     setProfileDropdown(false);
     navigate('/');
@@ -138,7 +127,7 @@ const Navbar = () => {
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
             <div className="navbar-icons">
               <Link to="/"><FaHome className="nav-icon" title="Home" /></Link>
-              <FaWhatsapp className="nav-icon" />
+          
 
               <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
                 <FaHeart className="nav-icon" />
@@ -171,18 +160,6 @@ const Navbar = () => {
                       }}
                     >
                       My Account
-                    </button>
-                    <button
-                      className="profile-dropdown-item"
-                      onClick={() => handleAuthOpen('signin')}
-                    >
-                      Sign In
-                    </button>
-                    <button
-                      className="profile-dropdown-item"
-                      onClick={() => handleAuthOpen('signup')}
-                    >
-                      Sign Up
                     </button>
                     <button
                       className="profile-dropdown-item signout"
@@ -227,7 +204,6 @@ const Navbar = () => {
         mode={authMode}
       />
 
-      {/* Sign Out Confirmation Modal */}
       {showSignOutModal && (
         <div className="signout-modal-overlay" onClick={() => setShowSignOutModal(false)}>
           <div className="signout-modal" onClick={e => e.stopPropagation()}>

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
 import Banner from './Banner.jsx';
@@ -9,31 +9,70 @@ import CategoryProductPage from './ProductList/CategoryProductPage.jsx';
 import LikeManager from './LikeManager.jsx';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
-import CheckoutForm from './CheckoutForm.jsx';
+import CheckoutForm from './CheckoutForm.jsx'; 
 import Footer from './Footer.jsx'; 
-import Address from './Address.jsx'; // Import the Address component
-
+import Address from './Address.jsx';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('modamartUser');
+  const location = useLocation();
+
+  // If authenticated, prevent access to login/signup
+  if (isAuthenticated && (location.pathname === '/' || location.pathname === '/signup')) {
+    return <Navigate to="/home" replace />;
+  }
+
+  // If not authenticated, only allow login/signup
+  if (!isAuthenticated && location.pathname !== '/' && location.pathname !== '/signup') {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <>
-      <Navbar />
-      <PromoBanner />
       <Routes>
-        <Route path="/" element={<Banner />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={
+          <>
+            <Navbar />
+            <PromoBanner />
+            <Banner />
+            <Footer />
+          </>
+        } />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/liked" element={<LikeManager asPage={true} />} />
-        <Route path="/category/:categoryName" element={<CategoryPage />} />
-        <Route path="/category-product/:id" element={<CategoryProductPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/liked" element={
+          <>
+            <Navbar />
+            <LikeManager asPage={true} />
+            <Footer />
+          </>
+        } />
+        <Route path="/category/:categoryName" element={
+          <>
+            <Navbar />
+            <CategoryPage />
+            <Footer />
+          </>
+        } />
+        <Route path="/category-product/:id" element={
+          <>
+            <Navbar />
+            <CategoryProductPage />
+            <Footer />
+          </>
+        } />
         <Route path="/checkout" element={<CheckoutForm />} />
-        <Route path="/account" element={<Address />} /> {/* Add the new route here */}
-        {/* 404 fallback */}
-        <Route path="*" element={<h2 style={{ padding: '2rem' }}>404 - Page Not Found</h2>} />
+        <Route path="/account" element={
+          <>
+            <Navbar />
+            <Address />
+            <Footer />
+          </>
+        } />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer /> {/* <-- Add Footer here */}
     </>
   );
 }

@@ -9,7 +9,7 @@ const initialState = {
   name: '',
   address: '',
   city: '',
-  zip: '',
+  pin: '',
   email: '',
   cardNumber: '',
   expiry: '',
@@ -45,7 +45,7 @@ const CheckoutForm = () => {
           ...prev,
           address: `${addr.line1}${addr.line2 ? ', ' + addr.line2 : ''}`,
           city: addr.city,
-          zip: addr.zip,
+          pin: addr.zip,
         }));
       }
     }
@@ -62,7 +62,7 @@ const CheckoutForm = () => {
     if (!form.name) newErrors.name = 'Name is required';
     if (!form.address) newErrors.address = 'Address is required';
     if (!form.city) newErrors.city = 'City is required';
-    if (!form.zip) newErrors.zip = 'ZIP is required';
+    if (!form.zip) newErrors.zip = 'PIN is required';
     if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) newErrors.email = 'Valid email required';
     if (!form.cardNumber || !/^\d{16}$/.test(form.cardNumber)) newErrors.cardNumber = '16-digit card number required';
     if (!form.expiry || !/^\d{2}\/\d{2}$/.test(form.expiry)) newErrors.expiry = 'Expiry MM/YY required';
@@ -126,7 +126,7 @@ const CheckoutForm = () => {
                 {errors.address && <div className="error">{errors.address}</div>}
                 <input name="city" placeholder="City" value={form.city} onChange={handleChange} />
                 {errors.city && <div className="error">{errors.city}</div>}
-                <input name="zip" placeholder="ZIP / Postal Code" value={form.zip} onChange={handleChange} />
+                <input name="pin" placeholder="PIN Code" value={form.pin} onChange={handleChange} />
                 {errors.zip && <div className="error">{errors.zip}</div>}
                 <input name="email" placeholder="Email Address" value={form.email} onChange={handleChange} />
                 {errors.email && <div className="error">{errors.email}</div>}
