@@ -52,6 +52,7 @@ function App() {
         <Route path="/category/:categoryName" element={
           <>
             <Navbar />
+            <PromoBanner />
             <CategoryPage />
             <Footer />
           </>
