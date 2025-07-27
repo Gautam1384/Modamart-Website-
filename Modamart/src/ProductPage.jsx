@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
+import Footer from './Footer.jsx'; // Add this import
 import { useCart } from './Context/CartContext.jsx';
 import mockData from './data/mockData';
 import './ProductPage.css';
@@ -144,6 +145,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer /> 
         </>
     );
 };
