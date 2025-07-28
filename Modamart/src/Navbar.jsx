@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from './Context/CartContext.jsx';
 import './Navbar.css';
 import { FaHome, FaUser, FaHeart, FaShoppingCart, FaWhatsapp, FaBars, FaSignOutAlt } from 'react-icons/fa';
-import AuthModal from './AuthModal';
+// import AuthModal from './AuthModal';
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
@@ -27,8 +27,8 @@ const Navbar = () => {
     const stored = localStorage.getItem('likedProducts');
     return stored ? JSON.parse(stored).length : 0;
   });
-  const [authOpen, setAuthOpen] = useState(false);
-  const [authMode] = useState('signin'); // 'signin' or 'signup'
+  // const [authOpen] = useState(false);
+  // const [authMode] = useState('signin'); // 'signin' or 'signup'
   const [profileDropdown, setProfileDropdown] = useState(false);
   const [showSignOutModal, setShowSignOutModal] = useState(false);
 
@@ -197,12 +197,12 @@ const Navbar = () => {
         </header>
       </div>
 
-      {/* Auth Modal */}
+      {/* Auth Modal
       <AuthModal
         isOpen={authOpen}
         onClose={() => setAuthOpen(false)}
         mode={authMode}
-      />
+      /> */}
 
       {showSignOutModal && (
         <div className="signout-modal-overlay" onClick={() => setShowSignOutModal(false)}>
@@ -224,76 +224,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
