@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import PromoBanner from './PromoBanner.jsx';
@@ -7,6 +7,7 @@ import { useCart } from './Context/CartContext.jsx';
 import mockData from './data/mockData';
 import './ProductPage.css';
 import { FaHeart, FaShareAlt } from 'react-icons/fa';
+import GuestAlert from './GuestAlert';
 
 // Build a map of images by filename
 const imageModules = import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', {
@@ -25,6 +26,8 @@ const ProductPage = () => {
     const { cartItems, addToCart } = useCart();
     const product = mockData.find((item) => item.id === parseInt(id));
     const isInCart = cartItems.some(item => item.id === parseInt(id));
+    const [showAlert, setShowAlert] = useState(false);
+    const isGuest = localStorage.getItem('modamartUser') === 'guest';
 
     if (!product) {
         return <p>Product not found.</p>;
@@ -33,18 +36,19 @@ const ProductPage = () => {
     // Use imageName to get the correct image
     const imageSrc = imageMap[product.imageName] || '';
 
-    const handleAddToCart = () => {
-        const productimage = {
-            id: product.id,
-            title: product.title,
-            price: product.price,
-            image: imageSrc,
-        };
-        addToCart(productimage);
-        navigate('/cart');
+    const handleLike = () => {
+        if (isGuest) {
+            setShowAlert(true);
+            return;
+        }
+        // ...like logic...
     };
 
     const handleShare = () => {
+        if (isGuest) {
+            setShowAlert(true);
+            return;
+        }
         if (navigator.share) {
             navigator.share({
                 title: product.title,
@@ -57,6 +61,21 @@ const ProductPage = () => {
             const shareUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + window.location.href)}`;
             window.open(shareUrl, '_blank');
         }
+    };
+
+    const handleAddToCart = () => {
+        if (isGuest) {
+            setShowAlert(true);
+            return;
+        }
+        const productimage = {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: imageSrc,
+        };
+        addToCart(productimage);
+        navigate('/cart');
     };
 
     const handleBuyNow = () => {
@@ -105,6 +124,7 @@ const ProductPage = () => {
                                             opacity: 1,
                                             visibility: 'visible'
                                         }}
+                                        onClick={handleLike}
                                     // Add your like logic here if needed
                                     />
                                     <FaShareAlt
@@ -145,6 +165,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
             <Footer /> 
         </>
     );

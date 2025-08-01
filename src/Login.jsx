@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './AuthFile.css';
 
@@ -23,20 +23,49 @@ const Login = () => {
                     <input
                         type="email"
                         placeholder="Email"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
                         placeholder="Password"
-                        value={password} onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                     <button type="submit">Login</button>
+                    <button
+                        type="button"
+                        style={{
+                            marginTop: '1rem',
+                            background: '#6366f1',
+                            color: '#fff',
+                            borderRadius: '10px',
+                            padding: '0.9rem 0',
+                            fontWeight: 600,
+                            border: 'none',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => {
+                            localStorage.setItem('modamartUser', 'guest');
+                            navigate('/home');
+                        }}
+                    >
+                        Continue as Guest
+                    </button>
                 </form>
+
+                <p>
+                    <Link to="/forgot-password" style={{ color: '#6366f1', fontWeight: 600 }}>
+                        Forgot Password?
+                    </Link>
+                </p>
                 <p>
                     Don't have an account?{' '}
-                    <span onClick={() => navigate('/signup')}>Sign Up</span>
+                    <Link to="/signup" style={{ color: '#a855f7', fontWeight: 600 }}>
+                        Sign Up
+                    </Link>
                 </p>
             </div>
         </div>

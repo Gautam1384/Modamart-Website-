@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Banner.css';
 import mockData from './data/mockData';
-import { FaHeart, FaShareAlt } from 'react-icons/fa';
+import { FaHeart, FaShareAlt, FaShoppingCart } from 'react-icons/fa';
 import { getFavourites, toggleFavourite } from './Utils/favourites';
+import GuestAlert from './GuestAlert';
+import { useCart } from './Context/CartContext.jsx';
 
 // Banner images
 import Banner4 from './assets/BannerImages/Banner4.jpg';
@@ -20,6 +22,9 @@ Object.keys(imageModules).forEach((path) => {
 
 const Banner = () => {
   const navigate = useNavigate();
+  useCart();
+  const [showAlert, setShowAlert] = useState(false);
+  const isGuest = localStorage.getItem('modamartUser') === 'guest';
 
   const taglines = [
     "Your one-stop shop for ethnic fashion and trends.",
@@ -68,16 +73,47 @@ const Banner = () => {
   }, []);
 
   const handleProductClick = (productId) => {
-    navigate(`/product/${ productId }`);
+    navigate(`/product/${productId}`);
   };
 
   const handleBannerClick = () => {
-    if (mockData[0]) navigate(`/product/${ mockData[0].id }`);
+    if (mockData[0]) navigate(`/product/${mockData[0].id}`);
   };
 
   const productsWithImages = mockData.filter(
     (product) => product.imageName && imageMap[product.imageName]
   );
+
+  // Handler functions for guest restrictions
+  const handleLike = (e, productId) => {
+    e.stopPropagation();
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
+    toggleFavourite(productId);
+    setLikedIds(getFavourites());
+  };
+
+  const handleShare = (e, product) => {
+    e.stopPropagation();
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
+    const shareUrl = window.location.origin + `/product/${product.id}`;
+    if (navigator.share) {
+      navigator.share({
+        title: product.title,
+        text: product.description,
+        url: shareUrl,
+      });
+    } else {
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + shareUrl)}`;
+      window.open(waUrl, '_blank');
+    }
+  };
+
 
   return (
     <>
@@ -97,7 +133,7 @@ const Banner = () => {
                 <img
                   src={bannerImages[currentBannerIndex]}
                   alt={`Banner ${currentBannerIndex + 1}`}
-                className="banner-img"
+                  className="banner-img"
                 />
               </div>
             </div>
@@ -114,7 +150,7 @@ const Banner = () => {
                     <div className="image-area">
                       {imageSrc && <img src={imageSrc} alt={product.title} />}
 
-                      {/* Like + Share vertically stacked */}
+                      {/* Like + Share + Cart vertically stacked */}
                       <div
                         style={{
                           position: 'absolute',
@@ -136,11 +172,7 @@ const Banner = () => {
                             padding: 6,
                             fontSize: 22
                           }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleFavourite(product.id);
-                            setLikedIds(getFavourites());
-                          }}
+                          onClick={(e) => handleLike(e, product.id)}
                         />
                         <FaShareAlt
                           className="share-icon"
@@ -151,23 +183,10 @@ const Banner = () => {
                             padding: 6,
                             fontSize: 22
                           }}
-                          onClick={e => {
-                            e.stopPropagation();
-                            const shareUrl = window.location.origin + `/product/${product.id}`;
-                            if (navigator.share) {
-                              navigator.share({
-                                title: product.title,
-                                text: product.description,
-                                url: shareUrl,
-                              });
-                            } else {
-                              // WhatsApp fallback
-                              const waUrl = `https://wa.me/?text=${encodeURIComponent(product.title + '\n' + shareUrl)}`;
-                              window.open(waUrl, '_blank');
-                            }
-                          }}
+                          onClick={e => handleShare(e, product)}
                           title="Share"
                         />
+                   
                       </div>
                     </div>
 
@@ -179,15 +198,51 @@ const Banner = () => {
                 );
               })}
             </div>
+            <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
           </section>
         </div>
       </div>
-  
     </>
   );
 };
 
 export default Banner;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

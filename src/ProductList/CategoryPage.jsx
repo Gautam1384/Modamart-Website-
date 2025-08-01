@@ -8,6 +8,7 @@ import mockDataUnisex from '../data/mockDataUnisex';
 import mockDataAccessories from '../data/mockDataAcc';
 import FilterCategory from '../ProductList/FilterCategory';
 import { getFavourites, toggleFavourite } from '../Utils/favourites';
+import GuestAlert from '../GuestAlert';
 import './CategoryPage.css';
 const rawImages = import.meta.glob('/src/assets/CategoryImage/*.{jpg,jpeg,png}', { eager: true });
 const images = Object.entries(rawImages).reduce((acc, [path, module]) => {
@@ -46,6 +47,8 @@ const CategoryPage = () => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [likedIds, setLikedIds] = useState(getFavourites());
+  const [showAlert, setShowAlert] = useState(false);
+  const isGuest = localStorage.getItem('modamartUser') === 'guest';
 
   // Reset filters when category changes for smooth navigation
   useEffect(() => {
@@ -161,7 +164,20 @@ const CategoryPage = () => {
     return images[product.imageName] || '';
   };
 
+  const handleLike = (product) => {
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
+    toggleFavourite(product.id);
+    setLikedIds(getFavourites());
+  };
+
   const handleShare = (product) => {
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
     if (navigator.share) {
       navigator.share({
         title: product.title,
@@ -174,6 +190,7 @@ const CategoryPage = () => {
       window.open(shareUrl, '_blank');
     }
   };
+
 
   const handleFilterChange = (filterType, value) => {
     setSelectedFilters((prev) => {
@@ -346,8 +363,7 @@ const CategoryPage = () => {
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleFavourite(product.id);
-                    setLikedIds(getFavourites());
+                    handleLike(product);
                   }}
                 />
                 <FaShareAlt
@@ -365,7 +381,7 @@ const CategoryPage = () => {
                     e.stopPropagation();
                     handleShare(product);
                   }}
-                  title="Share"
+                  title="Share"   
                 />
               </div>
               <h3>{product.title || product.name}</h3>
@@ -377,6 +393,7 @@ const CategoryPage = () => {
           )}
         </div>
       </div>
+      <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
     </div>
   );
 };

@@ -244,7 +244,7 @@ const mockDataWomen = [
     pattern: "Floral",
     occasion: "Festive",
     embellishment: "Sequins Work",
-    imageName: "women19.jpg"
+    imageName: "Women19.jpg"
   },
   {
     id: 69,
@@ -309,7 +309,7 @@ const mockDataWomen = [
     pattern: "Print",
     occasion: "sangeet",
     embellishment: "Stone Work",
-    imageName: "women24.jpg"
+    imageName: "Women24.jpg"
   }
 ];
 export default mockDataWomen;

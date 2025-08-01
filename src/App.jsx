@@ -12,20 +12,22 @@ import Signup from './Signup.jsx';
 import CheckoutForm from './CheckoutForm.jsx'; 
 import Footer from './Footer.jsx'; 
 import Address from './Address.jsx';
-import Contact from './Contact.jsx'; // Add this import
+import Contact from './Contact.jsx';
 import PrivacyPolicy from './PrivacyPolicy.jsx';
+import ForgotPassword from './ForgotPassword.jsx';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('modamartUser');
+  const isGuest = localStorage.getItem('modamartUser') === 'guest'; // <-- ADD THIS LINE
   const location = useLocation();
 
-  // If authenticated, prevent access to login/signup
-  if (isAuthenticated && (location.pathname === '/' || location.pathname === '/signup')) {
+  const publicPaths = ['/', '/signup', '/forgot-password'];
+
+  if (isAuthenticated && publicPaths.includes(location.pathname)) {
     return <Navigate to="/home" replace />;
   }
 
-  // If not authenticated, only allow login/signup
-  if (!isAuthenticated && location.pathname !== '/' && location.pathname !== '/signup') {
+  if (!isAuthenticated && !publicPaths.includes(location.pathname)) {
     return <Navigate to="/" replace />;
   }
 
@@ -34,6 +36,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        
         <Route path="/home" element={
           <>
             <Navbar />
@@ -42,7 +46,7 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/product/:id" element={<ProductPage isGuest={isGuest} />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/liked" element={
           <>
@@ -55,14 +59,14 @@ function App() {
           <>
             <Navbar />
             <PromoBanner />
-            <CategoryPage />
+            <CategoryPage isGuest={isGuest} />
             <Footer />
           </>
         } />
         <Route path="/category-product/:id" element={
           <>
             <Navbar />
-            <CategoryProductPage />
+            <CategoryProductPage isGuest={isGuest} />
             <Footer />
           </>
         } />

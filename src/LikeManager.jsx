@@ -8,7 +8,6 @@ import mockDataKids from './data/mockDataKids';
 import mockDataUnisex from './data/mockDataUnisex';
 import mockDataAccessories from './data/mockDataAcc';
 import './LikeManager.css';
-
 // Import images from all folders
 const imageModules = import.meta.glob('./assets/Image/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
 const categoryImageModules = import.meta.glob('./assets/CategoryImage/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });

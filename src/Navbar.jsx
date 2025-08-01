@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from './Context/CartContext.jsx';
 import './Navbar.css';
 import { FaHome, FaUser, FaHeart, FaShoppingCart, FaWhatsapp, FaBars, FaSignOutAlt } from 'react-icons/fa';
-// import AuthModal from './AuthModal';
+import GuestAlert from './GuestAlert'; // Make sure this import exists
 
 const Navbar = () => {
   const sugg = ["suits", "sarees", "lehengas", "gown", "kurtas", "anarkali"];
@@ -31,6 +31,7 @@ const Navbar = () => {
   // const [authMode] = useState('signin'); // 'signin' or 'signup'
   const [profileDropdown, setProfileDropdown] = useState(false);
   const [showSignOutModal, setShowSignOutModal] = useState(false);
+  const [showGuestAlert, setShowGuestAlert] = useState(false);
 
   const profileRef = useRef(null);
 
@@ -105,6 +106,17 @@ const Navbar = () => {
     navigate('/');
   };
 
+  // When guest logs in, clear liked products and cart
+  useEffect(() => {
+    const user = localStorage.getItem('modamartUser');
+    if (user === 'guest') {
+      localStorage.removeItem('likedProducts');
+      localStorage.removeItem('cartItems');
+    }
+  }, []);
+
+  const isGuest = localStorage.getItem('modamartUser') === 'guest';
+
   return (
     <>
       <div className="sticky-container">
@@ -127,18 +139,33 @@ const Navbar = () => {
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
             <div className="navbar-icons">
               <Link to="/"><FaHome className="nav-icon" title="Home" /></Link>
-          
 
-              <div className="navbar-heart-icon" onClick={() => navigate('/liked')} style={{ position: 'relative', cursor: 'pointer' }}>
+              {/* Liked Products */}
+              <div
+                className="navbar-heart-icon"
+                style={{ position: 'relative', cursor: isGuest ? 'not-allowed' : 'pointer', opacity: isGuest ? 0.5 : 1 }}
+                onClick={() => {
+                  if (isGuest) setShowGuestAlert(true);
+                  else navigate('/liked');
+                }}
+              >
                 <FaHeart className="nav-icon" />
-                {likeCount > 0 && (
+                {likeCount > 0 && !isGuest && (
                   <span className="like-badge">{likeCount}</span>
                 )}
               </div>
 
-              <div onClick={() => navigate('/cart')} className='cart-icon-container'>
+              {/* Cart */}
+              <div
+                onClick={() => {
+                  if (isGuest) setShowGuestAlert(true);
+                  else navigate('/cart');
+                }}
+                className='cart-icon-container'
+                style={{ cursor: isGuest ? 'not-allowed' : 'pointer', opacity: isGuest ? 0.5 : 1 }}
+              >
                 <FaShoppingCart className="nav-icon" />
-                {cartItems.length > 0 && (
+                {cartItems.length > 0 && !isGuest && (
                   <span className="cart-badge">{cartItems.length}</span>
                 )}
               </div>
@@ -219,6 +246,8 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      <GuestAlert show={showGuestAlert} onClose={() => setShowGuestAlert(false)} />
     </>
   );
 };

@@ -49,6 +49,16 @@ const Signup = () => {
                         required
                     />
                     <button type="submit">Sign Up</button>
+                    <button
+                        type="button"
+                        style={{ marginTop: '1rem', background: '#6366f1', color: '#fff', borderRadius: '10px', padding: '0.9rem 0', fontWeight: 600, border: 'none', cursor: 'pointer' }}
+                        onClick={() => {
+                            localStorage.setItem('modamartUser', 'guest');
+                            navigate('/home');
+                        }}
+                    >
+                        Continue as Guest
+                    </button>
                 </form>
                 <p>
                     Already have an account?{' '}

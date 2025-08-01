@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import mockData from '../data/mockData';
 import mockDataWomen from '../data/mockDataWomen';
@@ -8,6 +8,7 @@ import mockDataUnisex from '../data/mockDataUnisex';
 import mockDataAccessories from '../data/mockDataAcc';
 import { useCart } from '../Context/CartContext';
 import './CategoryPage.css';
+import GuestAlert from '../GuestAlert';
 
 // Import images for all categories
 const rawImages = import.meta.glob('/src/assets/CategoryImage/*.{jpg,jpeg,png}', { eager: true });
@@ -29,6 +30,8 @@ const CategoryProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { cartItems, addToCart } = useCart();
+  const [showAlert, setShowAlert] = useState(false);
+  const isGuest = localStorage.getItem('modamartUser') === 'guest';
 
   // Combine all products, but keep accessories separate for image mapping
   const allProducts = [
@@ -52,7 +55,27 @@ const CategoryProductPage = () => {
 
   const isInCart = product && cartItems.some(item => item.id === product.id);
 
+  const handleLike = () => {
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
+    // ...like logic...
+  };
+
+  const handleShare = () => {
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
+    // ...share logic...
+  };
+
   const handleAddToCart = () => {
+    if (isGuest) {
+      setShowAlert(true);
+      return;
+    }
     if (!product) return;
     const productToAdd = {
       id: product.id,
@@ -105,6 +128,9 @@ const CategoryProductPage = () => {
           <div className="go-back">
             <button onClick={() => navigate(-1)}>Go Back</button>
           </div>
+          <button onClick={handleLike}>Like</button>
+          <button onClick={handleShare}>Share</button>
+          <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
         </div>
       </div>
     </div>

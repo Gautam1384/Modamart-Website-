@@ -379,7 +379,7 @@ const mockData = [
         description: "These men's Juttis feature intricate embroidery and studs, blending traditional craftsmanship with modern style.",
         price: 2100,
         category: "Traditional",
-        imageName: "Man6.jpg"
+        imageName: "man6.jpg"
     },
 
     {
@@ -388,7 +388,7 @@ const mockData = [
         description: "A man dressed in a traditional Indian Sherwani, a long coat often worn for formal events.",
         price: 2200,
         category: "Traditional",
-        imageName: "Man8.jpg"
+        imageName: "man8.jpg"
     },
 
 
