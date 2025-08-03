@@ -55,21 +55,7 @@ const CategoryProductPage = () => {
 
   const isInCart = product && cartItems.some(item => item.id === product.id);
 
-  const handleLike = () => {
-    if (isGuest) {
-      setShowAlert(true);
-      return;
-    }
-    // ...like logic...
-  };
 
-  const handleShare = () => {
-    if (isGuest) {
-      setShowAlert(true);
-      return;
-    }
-    // ...share logic...
-  };
 
   const handleAddToCart = () => {
     if (isGuest) {
@@ -128,8 +114,6 @@ const CategoryProductPage = () => {
           <div className="go-back">
             <button onClick={() => navigate(-1)}>Go Back</button>
           </div>
-          <button onClick={handleLike}>Like</button>
-          <button onClick={handleShare}>Share</button>
           <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
         </div>
       </div>
