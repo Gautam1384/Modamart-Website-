@@ -1,3 +1,5 @@
+
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
@@ -35,6 +37,8 @@ const Login = () => {
                         required
                     />
                     <button type="submit">Login</button>
+
+                    {/* Guest Login */}
                     <button
                         type="button"
                         style={{
@@ -53,6 +57,46 @@ const Login = () => {
                         }}
                     >
                         Continue as Guest
+                    </button>
+
+                    {/* Admin Login */}
+                    <button
+                        type="button"
+                        style={{
+                            marginTop: '1rem',
+                            background: '#f59e0b',
+                            color: '#fff',
+                            borderRadius: '10px',
+                            padding: '0.9rem 0',
+                            fontWeight: 600,
+                            border: 'none',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => {
+                            navigate('/admin-login');
+                        }}
+                    >
+                        Login as Admin
+                    </button>
+
+                    {/* Seller Login */}
+                    <button
+                        type="button"
+                        style={{
+                            marginTop: '1rem',
+                            background: '#10b981',
+                            color: '#fff',
+                            borderRadius: '10px',
+                            padding: '0.9rem 0',
+                            fontWeight: 600,
+                            border: 'none',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => {
+                            navigate('/seller-login'); // This will go to Seller login form
+                        }}
+                    >
+                        Login as Seller
                     </button>
                 </form>
 
