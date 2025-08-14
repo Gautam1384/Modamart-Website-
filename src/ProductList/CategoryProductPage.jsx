@@ -9,6 +9,7 @@ import mockDataAccessories from '../data/mockDataAcc';
 import { useCart } from '../Context/CartContext';
 import './CategoryPage.css';
 import GuestAlert from '../GuestAlert';
+import PromoBanner from '../PromoBanner.jsx';
 
 // Import images for all categories
 const rawImages = import.meta.glob('/src/assets/CategoryImage/*.{jpg,jpeg,png}', { eager: true });
@@ -90,34 +91,37 @@ const CategoryProductPage = () => {
   if (!product) return <p>Product not found.</p>;
 
   return (
-    <div className="product-page">
-      <div className="product-container">
-        <div className="product-image-section">
-          {imageSrc ? (
-            <img className="product-image" src={imageSrc} alt={product.name || product.title} />
-          ) : (
-            <p>Image not found</p>
-          )}
-        </div>
-        <div className="product-details">
-          <h2 className="product-title">{product.name || product.title}</h2>
-          <p className="product-desc">{product.description}</p>
-          <p className="product-price">₹{product.price}</p>
-          <div className="product-buttons">
-            {isInCart ? (
-              <button onClick={() => navigate('/cart')}>Go to Cart</button>
+    <>
+      <PromoBanner />
+      <div className="product-page">
+        <div className="product-container">
+          <div className="product-image-section">
+            {imageSrc ? (
+              <img className="product-image" src={imageSrc} alt={product.name || product.title} />
             ) : (
-              <button className="cart-btn" onClick={handleAddToCart}>Add to Cart</button>
+              <p>Image not found</p>
             )}
-            <button className="buy-btn" onClick={handleBuyNow}>Buy Now</button>
           </div>
-          <div className="go-back">
-            <button onClick={() => navigate(-1)}>Go Back</button>
+          <div className="product-details">
+            <h2 className="product-title">{product.name || product.title}</h2>
+            <p className="product-desc">{product.description}</p>
+            <p className="product-price">₹{product.price}</p>
+            <div className="product-buttons">
+              {isInCart ? (
+                <button onClick={() => navigate('/cart')}>Go to Cart</button>
+              ) : (
+                <button className="cart-btn" onClick={handleAddToCart}>Add to Cart</button>
+              )}
+              <button className="buy-btn" onClick={handleBuyNow}>Buy Now</button>
+            </div>
+            <div className="go-back">
+              <button onClick={() => navigate(-1)}>Go Back</button>
+            </div>
+            <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
           </div>
-          <GuestAlert show={showAlert} onClose={() => setShowAlert(false)} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -138,7 +138,7 @@ const Navbar = () => {
 
           <nav className={`anchor ${menuOpen ? 'open' : ''}`}>
             <div className="navbar-icons">
-              <Link to="/"><FaHome className="nav-icon" title="Home" /></Link>
+              <Link to="/home"><FaHome className="nav-icon" title="Home" /></Link>
 
               {/* Liked Products */}
               <div
