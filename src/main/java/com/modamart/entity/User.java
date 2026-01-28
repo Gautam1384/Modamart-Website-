@@ -1,3 +1,7 @@
+
+
+
+
 package com.modamart.entity;
 
 import jakarta.persistence.*;
@@ -14,7 +18,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(unique = true)
     private String email;
